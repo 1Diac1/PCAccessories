@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories", "PCAccessories\PCAccessories.csproj", "{E5CAF3F7-FDFF-4287-B2CC-F3067827CD7E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C4C3F84A-FE26-4C34-A3F0-BF0287BB7A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories", "PCAccessories\PCAccessories.csproj", "{E5CAF3F7-FDFF-4287-B2CC-F3067827CD7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +18,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E5CAF3F7-FDFF-4287-B2CC-F3067827CD7E} = {C4C3F84A-FE26-4C34-A3F0-BF0287BB7A90}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C28AB83-9AB5-4B54-A967-6E1AB4FD53F2}
