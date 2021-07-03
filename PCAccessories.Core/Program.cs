@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PCAccessories
+namespace PCAccessories.Core
 {
     public class Program
     {

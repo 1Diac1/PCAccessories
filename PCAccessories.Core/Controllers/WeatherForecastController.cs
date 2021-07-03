@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Controllers
+namespace PCAccessories.Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]

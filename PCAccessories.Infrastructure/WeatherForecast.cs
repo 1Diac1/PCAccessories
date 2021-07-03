@@ -1,6 +1,6 @@
 using System;
 
-namespace PCAccessories
+namespace PCAccessories.Infrastructure
 {
     public class WeatherForecast
     {
