@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Core
+namespace PCAccessories.Web.Api
 {
     public class Program
     {
