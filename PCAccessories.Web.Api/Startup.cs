@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -7,14 +8,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using PCAccessories.Application;
+using PCAccessories.Application.Authenticators;
 using PCAccessories.Application.IdentityService;
+using PCAccessories.Application.RefreshTokenRepository;
 using PCAccessories.Application.TokenGenerators;
+using PCAccessories.Application.TokenValidators;
 using PCAccessories.Helpers.Authentication;
 using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PCAccessories.Web.Api
@@ -41,11 +47,28 @@ namespace PCAccessories.Web.Api
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<UserContext>();
 
+            services.AddSingleton(jwtConfiguration);
+            services.AddScoped<Authenticator>();
             services.AddScoped<TokenGenerator>();
             services.AddScoped<AccessTokenGenerator>();
             services.AddScoped<RefreshTokenGenerator>();
+            services.AddScoped<RefreshTokenValidator>();
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguration.AccessTokenSecret)),
+                    ValidIssuer = jwtConfiguration.Issuer,
+                    ValidAudience = jwtConfiguration.Audience,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
 
         }
@@ -59,6 +82,7 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

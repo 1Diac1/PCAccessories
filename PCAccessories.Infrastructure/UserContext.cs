@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PCAccessories.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ namespace PCAccessories.Infrastructure
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         {
-           
         }
 
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

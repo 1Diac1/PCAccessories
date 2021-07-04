@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PCAccessories.Core
 {
-    public class AuthenticationResult
+    public class RefreshToken
     {
-        public bool Success { get; set; }
-        public IEnumerable<string> Errors { get; set; }
+        public Guid Id { get; set; }
+        public string Token { get; set; }
+        public Guid UserId { get; set; }
     }
 }

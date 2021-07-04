@@ -21,10 +21,10 @@ namespace PCAccessories.Application.TokenGenerators
         public string GenerateToken()
         {
             return _tokenGenerator.GenerateToken(
-                _configuration.RefreshTokenSecret,
-                _configuration.Issuer,
-                _configuration.Audience,
-                _configuration.RefreshTokenExpirationMinutes);
+                _jwtConfiguration.RefreshTokenSecret,
+                _jwtConfiguration.Issuer,
+                _jwtConfiguration.Audience,
+                _jwtConfiguration.RefreshTokenExpirationMinutes);
         }
     }
 }

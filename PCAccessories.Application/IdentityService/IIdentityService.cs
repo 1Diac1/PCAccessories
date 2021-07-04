@@ -10,7 +10,7 @@ namespace PCAccessories.Application.IdentityService
 {
     public interface IIdentityService
     {
-        Task<AuthenticationResult> RegisterAsync(RegisterRequest request);
-        Task<AuthenticationResult> LoginAsync(LoginRequest request);
+        Task<AuthResult> RegisterAsync(RegisterRequest request);
+        Task<AuthResult> LoginAsync(LoginRequest request);
     }
 }

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\PCAccessories.Infrastructure\PCAccessories.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Authenticators\" />
+  </ItemGroup>
+
 </Project>

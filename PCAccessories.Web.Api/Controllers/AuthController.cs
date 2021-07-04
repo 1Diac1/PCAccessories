@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PCAccessories.Application.Authenticators;
 using PCAccessories.Application.IdentityService;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Responses;
@@ -15,10 +16,12 @@ namespace PCAccessories.Web.Api.Controllers
     public class AuthController : Controller
     {
         private readonly IIdentityService _identityService;
+        private readonly Authenticator _authenticator;
 
-        public AuthController(IIdentityService identityService)
+        public AuthController(IIdentityService identityService, Authenticator authenticator)
         {
             _identityService = identityService;
+            _authenticator = authenticator;
         }
 
         [HttpPost("register")]
@@ -32,9 +35,9 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok();
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken });
         }
-
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
@@ -43,7 +46,9 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok();
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
+
+        
     }
 }
