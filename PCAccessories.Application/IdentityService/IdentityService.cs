@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using PCAccessories.Application.UserRepository;
 using PCAccessories.Core;
 using PCAccessories.Core.Requests;
-using PCAccessories.Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +43,21 @@ namespace PCAccessories.Application.IdentityService
 
             if (!createdUser.Succeeded)
                 return new AuthenticationResult { Errors = createdUser.Errors.Select(x => x.Description) };
+
+            return new AuthenticationResult { Success = true };
+        }
+
+        public async Task<AuthenticationResult> LoginAsync(LoginRequest request)
+        {
+            var user = await _userManager.FindByNameAsync(request.Username);
+
+            if (user == null)
+                return new AuthenticationResult { Errors = new[] { "Пользователь не найден" } };
+
+            var userHasValidPassword = await _userManager.CheckPasswordAsync(user, request.Password);
+
+            if (userHasValidPassword == false)
+                return new AuthenticationResult { Errors = new[] { "Логин или пароль неверный" } };
 
             return new AuthenticationResult { Success = true };
         }

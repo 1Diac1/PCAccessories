@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCAccessories.Application.IdentityService;
-using PCAccessories.Application.PasswordHasher;
-using PCAccessories.Application.UserRepository;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Responses;
-using PCAccessories.Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +28,17 @@ namespace PCAccessories.Web.Api.Controllers
                 return BadRequest(new AuthFailedResponse { Errors = ModelState.Values.SelectMany(x => x.Errors.Select(xx => xx.ErrorMessage)) });
 
             var authResponse = await _identityService.RegisterAsync(request);
+
+            if (!authResponse.Success)
+                return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
+
+            return Ok();
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            var authResponse = await _identityService.LoginAsync(request);
 
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });

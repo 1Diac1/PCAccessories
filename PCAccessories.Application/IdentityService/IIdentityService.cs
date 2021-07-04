@@ -1,6 +1,5 @@
 ﻿using PCAccessories.Core;
 using PCAccessories.Core.Requests;
-using PCAccessories.Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +11,6 @@ namespace PCAccessories.Application.IdentityService
     public interface IIdentityService
     {
         Task<AuthenticationResult> RegisterAsync(RegisterRequest request);
+        Task<AuthenticationResult> LoginAsync(LoginRequest request);
     }
 }

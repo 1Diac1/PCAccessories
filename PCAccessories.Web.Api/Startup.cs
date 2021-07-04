@@ -9,8 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PCAccessories.Application;
 using PCAccessories.Application.IdentityService;
-using PCAccessories.Application.PasswordHasher;
-using PCAccessories.Application.UserRepository;
 using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
