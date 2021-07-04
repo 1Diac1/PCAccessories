@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PCAccessories.Core\PCAccessories.Core.csproj" />
+    <ProjectReference Include="..\PCAccessories.Helpers\PCAccessories.Helpers.csproj" />
     <ProjectReference Include="..\PCAccessories.Infrastructure\PCAccessories.Infrastructure.csproj" />
   </ItemGroup>
 

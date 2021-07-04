@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PCAccessories.Application\PCAccessories.Application.csproj" />
+    <ProjectReference Include="..\PCAccessories.Helpers\PCAccessories.Helpers.csproj" />
     <ProjectReference Include="..\PCAccessories.Infrastructure\PCAccessories.Infrastructure.csproj" />
   </ItemGroup>
 

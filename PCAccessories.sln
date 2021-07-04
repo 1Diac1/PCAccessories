@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Application", "PCAccessories.Application\PCAccessories.Application.csproj", "{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Helpers", "PCAccessories.Helpers\PCAccessories.Helpers.csproj", "{77EE7B59-2B75-4904-8556-904244D3FE98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EE7B59-2B75-4904-8556-904244D3FE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EE7B59-2B75-4904-8556-904244D3FE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EE7B59-2B75-4904-8556-904244D3FE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EE7B59-2B75-4904-8556-904244D3FE98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

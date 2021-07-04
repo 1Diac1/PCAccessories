@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PCAccessories.Application;
 using PCAccessories.Application.IdentityService;
+using PCAccessories.Application.TokenGenerators;
+using PCAccessories.Helpers.Authentication;
 using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -28,15 +30,24 @@ namespace PCAccessories.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            JWTConfiguration jwtConfiguration = new JWTConfiguration();
+            Configuration.Bind("Authentication", jwtConfiguration);
+
             services.AddDbContext<UserContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<UserContext>();
 
+            services.AddScoped<TokenGenerator>();
+            services.AddScoped<AccessTokenGenerator>();
+            services.AddScoped<RefreshTokenGenerator>();
             services.AddScoped<IIdentityService, IdentityService>();
 
-            services.AddControllers();
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
