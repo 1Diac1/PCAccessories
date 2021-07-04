@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Регистрация</title>
+	<link rel="stylesheet" href="styles/registr.css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+</head>
+<body>
+    <div id="login">
+        <form action="" method="POST">
+            <fieldset class="clearfix">
+                <p><span class="entypo-user"></span><input id="username" type="text" placeholder="Логин" autocomplete="off" required></p>
+                <p><span class="entypo-mail"></span><input id="email" type="text" placeholder="Почта" autocomplete="off" required></p>
+                <p><span class="entypo-lock"></span><input id="password" type="password"  placeholder="Пароль" required></p>
+                <p><span class="entypo-lock"></span><input id="password" type="password"  placeholder="Подтвердите пароль" required></p>
+                <p><input onclick="checkInput()" class="btn" type="submit" value="Регистрация"></p>
+            </fieldset>
+        </form>
+        <p>Уже есть аккаунт? &nbsp;&nbsp;<a href="index.html">Вход</a><span class="entypo-arrow-right"></span></p>
+        <p class="forgotPass" style="margin-top: 5px;"><a href="#">Забыли пароль?</a></p>
+    </div>
+
+    <script src="script/registr.js"></script>
+</body>
+</html>
