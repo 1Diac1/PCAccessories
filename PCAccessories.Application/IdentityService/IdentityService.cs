@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PCAccessories.Application.Authenticators;
+using PCAccessories.Application.RefreshTokenRepository;
+using PCAccessories.Application.TokenValidators;
 using PCAccessories.Core;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Responses;
+using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +19,22 @@ namespace PCAccessories.Application.IdentityService
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly Authenticator _authenticator;
+        private readonly RefreshTokenValidator _refreshTokenValidator;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly UserContext _context;
 
-        public IdentityService(UserManager<IdentityUser> userManager, Authenticator authenticator)
+        public IdentityService(
+            UserManager<IdentityUser> userManager,
+            Authenticator authenticator,
+            RefreshTokenValidator refreshTokenValidator,
+            IRefreshTokenRepository refreshTokenRepository, 
+            UserContext context)
         {
             _userManager = userManager;
             _authenticator = authenticator;
+            _refreshTokenValidator = refreshTokenValidator;
+            _refreshTokenRepository = refreshTokenRepository;
+            _context = context;
         }
 
         public async Task<AuthResult> RegisterAsync(RegisterRequest request)
@@ -50,7 +65,7 @@ namespace PCAccessories.Application.IdentityService
 
             AuthUserResponse response = await _authenticator.Authenticate(user);
 
-            return new AuthResult{ AccessToken = response.AccessToken, RefreshToken = response.RefreshToken  };
+            return new AuthResult{ Success = true, AccessToken = response.AccessToken };
         }
 
         public async Task<AuthResult> LoginAsync(LoginRequest request)
@@ -65,7 +80,34 @@ namespace PCAccessories.Application.IdentityService
             if (userHasValidPassword == false)
                 return new AuthResult { Errors = new[] { "Логин или пароль неверный" } };
 
-            return new AuthResult { Success = true };
+            AuthUserResponse response = await _authenticator.Authenticate(user);
+
+            return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
         }
+
+        public async Task<AuthResult> RefreshTokenAsync(RefreshRequest request)
+        {
+            bool isValidRefreshToken = _refreshTokenValidator.Validate(request.RefreshToken);
+
+            if (!isValidRefreshToken)
+                return new AuthResult { Errors = new[] { "Refresh токен недействителен" } };
+
+            RefreshToken refreshTokenDTO = await _refreshTokenRepository.GetByToken(request.RefreshToken);
+
+            if (refreshTokenDTO == null)
+                return new AuthResult { Errors = new[] { "Refresh токен не найден" } };
+
+            await _refreshTokenRepository.Delete(refreshTokenDTO.Id);
+
+            var user = await _userManager.FindByIdAsync(refreshTokenDTO.UserId);
+
+            if (user == null)
+                return new AuthResult { Errors = new[] { "Пользователь не найден" } };
+
+            AuthUserResponse response = await _authenticator.Authenticate(user);
+
+            return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
+        }
+
     }
 }

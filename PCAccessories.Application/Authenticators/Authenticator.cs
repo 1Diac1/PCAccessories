@@ -32,10 +32,10 @@ namespace PCAccessories.Application.Authenticators
             string accessToken = _accessTokenGenerator.GenerateToken(user);
             string refreshToken = _refreshTokenGenerator.GenerateToken();
 
-            RefreshToken refreshTokenDTO = new RefreshToken 
-            { 
+            RefreshToken refreshTokenDTO = new RefreshToken
+            {
                 Token = refreshToken,
-                UserId = Guid.Parse(user.Id)
+                UserId = user.Id
             };
 
             await _refreshTokenRepository.Create(refreshTokenDTO);

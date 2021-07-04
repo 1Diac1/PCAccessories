@@ -23,6 +23,7 @@ namespace PCAccessories.Application.RefreshTokenRepository
             refreshToken.Id = Guid.NewGuid();
 
             await _context.RefreshTokens.AddAsync(refreshToken);
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(Guid id)
@@ -31,14 +32,18 @@ namespace PCAccessories.Application.RefreshTokenRepository
 
             if (id != null)
                 _context.RefreshTokens.Remove(tokenId);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAll(Guid userId)
         {
-            var userTokensId = await _context.RefreshTokens.FirstOrDefaultAsync(x => x.UserId == userId);
+            var userTokensId = await _context.RefreshTokens.FirstOrDefaultAsync(x => x.UserId == userId.ToString());
 
             if (userTokensId != null)
                 _context.RefreshTokens.Remove(userTokensId);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<RefreshToken> GetByToken(string token)

@@ -12,5 +12,6 @@ namespace PCAccessories.Application.IdentityService
     {
         Task<AuthResult> RegisterAsync(RegisterRequest request);
         Task<AuthResult> LoginAsync(LoginRequest request);
+        Task<AuthResult> RefreshTokenAsync(RefreshRequest request);
     }
 }

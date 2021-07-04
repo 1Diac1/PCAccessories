@@ -224,8 +224,8 @@ namespace PCAccessories.Infrastructure.Migrations
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
