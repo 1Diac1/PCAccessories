@@ -17,8 +17,7 @@ function signIn() {
 			accessToken: data.accessToken,
 			refreshToken: data.refreshToken,
 		});
-		return json;
+		console.log(JSON.parse(json));
         console.log(data);
     });
-	console.log(JSON.parse(json));
 }
