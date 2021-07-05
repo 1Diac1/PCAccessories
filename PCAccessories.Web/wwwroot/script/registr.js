@@ -4,7 +4,7 @@ const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 
 function signUp() {
-    fetch('http://localhost:3161/api/register', {
+    fetch('https://localhost:3161/api/register', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf-8'
