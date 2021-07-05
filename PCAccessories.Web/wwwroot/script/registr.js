@@ -1,4 +1,3 @@
-const btn = document.getElementById('SignUp');
 const login = document.getElementById('username');
 const mail = document.getElementById('mail')
 const password = document.getElementById('password');
@@ -21,3 +20,7 @@ function signUp() {
         console.log(data);
     });
 }
+// login.value,
+//         password: password.value,
+//         confirmpassword: confirmpassword.value,
+//         email: mail.value,

@@ -1,20 +1,15 @@
-const btn = document.getElementById('SignUp');
-const login = document.getElementById('username');
-const mail = document.getElementById('mail')
-const password = document.getElementById('password');
-const confirmpassword = document.getElementById('confirmpassword');
+const checkLogin = document.getElementById('username');
+const checkPass = document.getElementById('password');
 
-function signUp() {
-    fetch('http://localhost:3161/api/register', {
+function signIn() {
+    fetch('http://localhost:3161/api/login', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-        username:login.value,
-        password: password.value,
-        confirmpassword: confirmpassword.value,
-        email: mail.value,
+        username:checkLogin.value,
+        password: checkPass.value,
     })
     })
     .then((data) => {
