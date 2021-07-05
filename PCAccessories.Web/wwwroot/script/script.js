@@ -1,10 +1,8 @@
 const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 
-
-
 function signIn() {
-    fetch('http://localhost:3161/api/login', {
+	let response = fetch('http://localhost:3161/api/login', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -15,7 +13,7 @@ function signIn() {
     })
     })
     .then((data) => {
-		localStorage.setItem('accessToken', data.accessToken);
         console.log(data);
     });
+	alert(JSON.parse(response));
 }
