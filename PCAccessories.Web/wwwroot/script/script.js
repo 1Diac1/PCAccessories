@@ -1,5 +1,5 @@
 const checkLogin = document.getElementById('signLogin');
-const checkPass = document.getElementById('signPassword');
+const checkPass = document.getElementById('signPass');
 
 function signIn() {
     fetch('http://localhost:3161/api/login', {
@@ -8,8 +8,8 @@ function signIn() {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-        username:checkLogin.value,
-        password: checkPass.value,
+        signLogin: checkLogin.value,
+        signPass: checkPass.value,
     })
     })
     .then((data) => {
