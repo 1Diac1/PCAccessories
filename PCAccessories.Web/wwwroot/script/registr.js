@@ -1,8 +1,8 @@
 const btn = document.getElementById('SignUp');
-let login = document.getElementById('username');
-let mail = document.getElementById('mail')
-let password = document.getElementById('password');
-let confirmpassword = document.getElementById('password');
+const login = document.getElementById('username');
+const mail = document.getElementById('mail')
+const password = document.getElementById('password');
+const confirmpassword = document.getElementById('confirmpassword');
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -11,7 +11,7 @@ function signUp() {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-        name:login.value,
+        username:login.value,
         password: password.value,
         confirmpassword: confirmpassword.value,
         email: mail.value,
