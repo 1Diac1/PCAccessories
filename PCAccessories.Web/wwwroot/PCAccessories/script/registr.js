@@ -19,4 +19,4 @@ function signUp() {
     .then((data) => {
         console.log(data);
     });
-}
+} 
