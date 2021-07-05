@@ -11,10 +11,10 @@ function signUp() {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-        name:login.textContent,
-        password: password.textContent,
-        confirmpassword: confirmpassword.textContent,
-        email: mail.textContent
+        name:login.value,
+        password: password.value,
+        confirmpassword: confirmpassword.value,
+        email: mail.value,
     })
     })
     .then((data) => {
