@@ -8,8 +8,8 @@ function signIn() {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-        signLogin: checkLogin.value,
-        signPass: checkPass.value,
+        username: checkLogin.value,
+        password: checkPass.value,
     })
     })
     .then((data) => {
