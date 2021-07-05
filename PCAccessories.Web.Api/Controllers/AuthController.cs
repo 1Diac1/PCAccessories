@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PCAccessories.Application.Authenticators;
@@ -56,6 +57,7 @@ namespace PCAccessories.Web.Api.Controllers
         }
         
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             if (!ModelState.IsValid)
@@ -66,10 +68,13 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
+            SetRefreshTokenInCookie("3213123");
+
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
         [HttpPost("refresh")]
+        [AllowAnonymous]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)
         {
             if (!ModelState.IsValid)
@@ -90,18 +95,22 @@ namespace PCAccessories.Web.Api.Controllers
             List<string> list = new List<string>();
 
             for (int i = 0; i < 10; i++)
-            {
                 list.Add(i.ToString());
-        }
+
+            SetRefreshTokenInCookie("123");
 
             return Ok(list);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpPost("admins")]
-        public async Task<IActionResult> GetAllAdmins()
+        private void SetRefreshTokenInCookie(string refreshToken)
         {
-            return Ok("Success, you are admin");
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                MaxAge = TimeSpan.FromDays(90)
+            };
+
+            Response.Cookies.Append(".AspNetCore.Application.Id", refreshToken, cookieOptions); 
         }
     }
 }
