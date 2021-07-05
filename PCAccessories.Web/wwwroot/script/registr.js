@@ -5,7 +5,7 @@ const password = document.getElementById('password');
 
 function getRequests(callBack) {
     const xmlRequest = new XMLHttpRequest;
-    xmlRequest.open("GET", "https://jsonplaceholder.typicode.com/users");
+    xmlRequest.open("GET", "http://localhost:3161/api/users");
     
     xmlRequest.addEventListener('load', () => {
     const requests = JSON.parse(xmlRequest.responseText);
