@@ -37,6 +37,7 @@ namespace PCAccessories.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
 
             JWTConfiguration jwtConfiguration = new JWTConfiguration();
             Configuration.Bind("Authentication", jwtConfiguration);
@@ -56,8 +57,15 @@ namespace PCAccessories.Web.Api
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
+            services.AddAuthentication(x =>
             {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }
+            ).AddJwtBearer(o =>
+            {
+                o.SaveToken = true;
                 o.TokenValidationParameters = new TokenValidationParameters()
                 {
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguration.AccessTokenSecret)),
@@ -70,7 +78,6 @@ namespace PCAccessories.Web.Api
                 };
             });
 
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -80,7 +87,15 @@ namespace PCAccessories.Web.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
+
+            app.UseCors(options => options
+                    .WithOrigins(new[] { "http://localhost:10132" })
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials());
 
             app.UseAuthentication();
             app.UseAuthorization();

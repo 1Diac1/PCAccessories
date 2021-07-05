@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PCAccessories.Application.Authenticators;
 using PCAccessories.Application.IdentityService;
@@ -79,6 +81,20 @@ namespace PCAccessories.Web.Api.Controllers
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpPost("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            return Ok("Success, you are user");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("admins")]
+        public async Task<IActionResult> GetAllAdmins()
+        {
+            return Ok("Success, you are admin");
         }
     }
 }

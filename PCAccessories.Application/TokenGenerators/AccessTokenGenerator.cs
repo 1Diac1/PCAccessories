@@ -25,9 +25,10 @@ namespace PCAccessories.Application.TokenGenerators
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim("id", user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, "Admin")
             };
 
             return _tokenGenerator.GenerateToken(
