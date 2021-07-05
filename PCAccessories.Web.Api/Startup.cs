@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,8 @@ namespace PCAccessories.Web.Api
 {
     public class Startup
     {
+        readonly string CorsName = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,7 +41,14 @@ namespace PCAccessories.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsName, builder => builder
+                    .WithOrigins("http://localhost:10132")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
             JWTConfiguration jwtConfiguration = new JWTConfiguration();
             Configuration.Bind("Authentication", jwtConfiguration);
@@ -78,6 +89,17 @@ namespace PCAccessories.Web.Api
                 };
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+            });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -92,12 +114,9 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
-            app.UseCors(options => options
-                    .WithOrigins(new[] { "http://localhost:10132" })
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials());
+            app.UseCors(CorsName);
 
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 

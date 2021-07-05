@@ -79,7 +79,7 @@ namespace PCAccessories.Application.IdentityService
 
             if (userHasValidPassword == false)
                 return new AuthResult { Errors = new[] { "Логин или пароль неверный" } };
-
+            
             AuthUserResponse response = await _authenticator.Authenticate(user);
 
             return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
