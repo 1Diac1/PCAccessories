@@ -1,5 +1,5 @@
-const checkLogin = document.getElementById('username');
-const checkPass = document.getElementById('password');
+const checkLogin = document.getElementById('signLogin');
+const checkPass = document.getElementById('signPassword');
 
 function signIn() {
     fetch('http://localhost:3161/api/login', {
