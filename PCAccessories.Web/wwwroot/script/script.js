@@ -13,11 +13,6 @@ function signIn() {
     })
     })
     .then((data) => {
-		let json = JSON.stringify({
-			accessToken: data.accessToken,
-			refreshToken: data.refreshToken,
-		});
-		console.log(JSON.parse(json));
         console.log(data);
     });
 }
