@@ -5,10 +5,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\icon.png" />
+    <Content Remove="wwwroot\img\mother.png" />
+    <Content Remove="wwwroot\img\pc.png" />
+    <Content Remove="wwwroot\img\user.png" />
+    <Content Remove="wwwroot\img\videokarta.png" />
+    <Content Remove="wwwroot\script.js" />
+    <Content Remove="wwwroot\script\registr.js" />
+    <Content Remove="wwwroot\script\script.js" />
+    <Content Remove="wwwroot\style.css" />
+    <Content Remove="wwwroot\styles\form.css" />
+    <Content Remove="wwwroot\styles\registr.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\icon.png" />
+    <None Include="wwwroot\img\mother.png" />
+    <None Include="wwwroot\img\pc.png" />
+    <None Include="wwwroot\img\user.png" />
+    <None Include="wwwroot\img\videokarta.png" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\script.js" />
+    <None Include="wwwroot\script\registr.js" />
+    <None Include="wwwroot\script\script.js" />
+    <None Include="wwwroot\style.css" />
+    <None Include="wwwroot\styles\form.css" />
+    <None Include="wwwroot\styles\registr.css" />
   </ItemGroup>
 
 

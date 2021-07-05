@@ -83,11 +83,18 @@ namespace PCAccessories.Web.Api.Controllers
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
-        [Authorize(Roles = "Customer")]
-        [HttpPost("users")]
+        [HttpGet("users")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllUsers()
         {
-            return Ok("Success, you are user");
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(i.ToString());
+        }
+
+            return Ok(list);
         }
 
         [Authorize(Roles = "Admin")]
