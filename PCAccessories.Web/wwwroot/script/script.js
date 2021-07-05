@@ -16,4 +16,9 @@ function signIn() {
 		
         console.log(data);
     });
+	let json = JSON.stringify({
+		accessToken: data.accessToken,
+		refreshToken: data.refreshToken,
+	})
+	console.log(JSON.parse(json));
 }
