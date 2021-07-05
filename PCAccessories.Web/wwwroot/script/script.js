@@ -15,6 +15,4 @@ function signIn() {
     .then((data) => {
         console.log(data);
     });
-	checkLogin.value = '';
-	checkPass.value = '';
 }

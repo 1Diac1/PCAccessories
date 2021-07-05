@@ -19,8 +19,4 @@ function signUp() {
     .then((data) => {
         console.log(data);
     });
-    login.value = '';
-    password.value = '';
-    confirmpassword.value = '';
-    mail.value = '';
 }
