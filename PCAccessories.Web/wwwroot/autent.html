@@ -29,7 +29,7 @@
 			<input type="email" placeholder="Почта" id="mail" autocomplete="off" required/>
 			<input type="password" placeholder="Пароль" id="password" autocomplete="off" required/>
 			<input type="password" placeholder="Подтвердите пароль" id="confirmpassword" autocomplete="off" required/>
-			<button id="signUpButton" class="button1">Регистрация</button>
+			<button id="signUpButton" onclick="signUp()" class="button1">Регистрация</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -51,7 +51,7 @@
 				<div class="overlay-panel overlay-right">
 					<h1>Добро пожаловать!</h1>
 					<p>Хотите создать аккаунт?</p>
-					<button class="ghost" id="signUp" onclick="signUp()">Регистрация</button>
+					<button class="ghost" id="signUp">Регистрация</button>
 				</div>
 			</div>
 		</div>
