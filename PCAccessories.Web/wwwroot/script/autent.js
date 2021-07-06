@@ -15,7 +15,6 @@ function signIn() {
     })
     .then(response => response.json())
     .then(json => callBack(json))
-    .catch(json.errors)
 } 
 function callBack(x) {
     accessToken = x.accessToken;
@@ -27,7 +26,6 @@ function callBack(x) {
             localStorage.setItem('refreshToken', refreshToken);
             window.location.replace('home.html');
         }
-        alert(error)
     } catch(err) {
         console.log(err)
     }
