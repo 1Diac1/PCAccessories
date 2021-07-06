@@ -1,7 +1,6 @@
 const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
-let accessToken, refreshToken;
-let errors = [];
+let accessToken, refreshToken, errors;
 
 function signIn() {
 	fetch('http://localhost:3161/api/login', {
@@ -23,12 +22,11 @@ function callBack(x) {
     errors = x.errors;
     try {
         if(accessToken != null && refreshToken != null) {
-            localStorage.setItem('accessToken', addAccessToken);
-            localStorage.setItem('refreshToken', addRefreshToken);
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
             window.location.replace('home.html');
         }
+    } catch(errors) {
         alert(errors);
-    } catch(err) {
-        alert(err)
     }
 }
