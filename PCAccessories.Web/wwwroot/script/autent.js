@@ -1,6 +1,7 @@
 const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken;
+let errors = [];
 
 function signIn() {
 	fetch('http://localhost:3161/api/login', {
