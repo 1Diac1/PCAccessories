@@ -34,7 +34,7 @@ function callBack(x) {
             alert(errors);
         }
     } catch(err) {
-        alert(err)
+        console.log(err);
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');
