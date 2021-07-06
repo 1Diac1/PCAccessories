@@ -12,7 +12,7 @@ function signUp() {
     email: mail.value,
     })
     .then(res => {
-        window.location.replace('index.html');
+        window.location.replace('index.html');})
     .catch(function (error) {
         alert(error)
 })
