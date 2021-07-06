@@ -22,7 +22,7 @@ function callBack(x) {
     try {
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-        window.location.replace('index.html');
+        window.location.replace('home.html');
     } catch(err) {
         console.log(err)
     }
