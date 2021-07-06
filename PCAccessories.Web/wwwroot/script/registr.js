@@ -13,7 +13,6 @@ function signUp() {
     })
     .then(res => {
         window.location.replace('index.html');
-        alert('Заявка отправлена');})
     .catch(function (error) {
         alert(error)
 })

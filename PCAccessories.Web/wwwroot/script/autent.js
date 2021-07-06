@@ -14,9 +14,8 @@ function signIn() {
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
+            window.location.replace('index.html');
         }
-        window.location.replace('index.html');
-        alert('Заявка отправлена');
 })
     .catch(function (error) {
         alert(error)
