@@ -22,11 +22,13 @@ function callBack(x) {
     errors = x.errors;
     alert(errors);
     try {
+        alert(errors);
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
             window.location.replace('home.html');
         }
+        alert(errors);
     } catch(errors) {
         alert(errors);
     }
