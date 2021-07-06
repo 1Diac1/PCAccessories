@@ -26,7 +26,7 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-    } catch(errors) {
-        alert(errors)
+    } catch(errorsIn) {
+        alert(errorsIn)
     }
 }
