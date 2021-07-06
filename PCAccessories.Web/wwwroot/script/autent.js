@@ -15,6 +15,7 @@ function signIn() {
     })
     .then(response => response.json())
     .then(json => callBack(json))
+    .catch(json.errors)
 } 
 function callBack(x) {
     accessToken = x.accessToken;
