@@ -24,9 +24,11 @@ function callBack(x) {
     addAccessToken = x.accessToken
     addRefreshToken = x.refreshToken
     try {
-        localStorage.setItem('accessToken', addAccessToken);
-        localStorage.setItem('refreshToken', addRefreshToken);
-        window.location.replace('home.html');
+        if(addAccessToken != null && addRefreshToken != null) {
+            localStorage.setItem('accessToken', addAccessToken);
+            localStorage.setItem('refreshToken', addRefreshToken);
+            window.location.replace('home.html');
+        }
     } catch(err) {
         alert(err)
     }
