@@ -11,7 +11,6 @@ namespace PCAccessories.Core
     {
         public string AccessToken { get; set; }
 
-        [JsonIgnore]
         public string RefreshToken { get; set; }
         public bool Success { get; set; }
         public IEnumerable<string> Errors { get; set; }
