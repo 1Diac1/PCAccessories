@@ -6,14 +6,27 @@ let addAccessToken, addRefreshToken, errorUp;
 
 function signUp() {
     axios.post('http://localhost:3161/api/register', {
-    username:login.value,
-    password: password.value,
-    confirmpassword: confirmpassword.value,
-    email: mail.value,
+    username:checkLogin.value,
+    password: checkPass.value,
+    mail: mail.value,
+    confirmpassword: confirmpassword.value
     })
-    .then(res => {
-        window.location.replace('index.html');})
+    .then(res => res.json())
+    .then(json => callBack(json))
     .catch(function (error) {
         alert(error)
 })
+}
+function callBack(x) {
+    addAccessToken = x.accessToken;
+    addRefreshToken = x.refreshToken;
+    try {
+        if(addAccessToken != null && addRefreshToken != null) {
+            localStorage.setItem('accessToken', addAccessToken);
+            localStorage.setItem('refreshToken', addRefreshToken);
+            window.location.replace('home.html');
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
