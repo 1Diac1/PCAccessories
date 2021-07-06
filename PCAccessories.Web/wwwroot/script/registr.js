@@ -3,7 +3,6 @@ const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken;
-let errors;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -24,7 +23,7 @@ function signUp() {
 function callBack(x) {
     addAccessToken = x.accessToken;
     addRefreshToken = x.refreshToken;
-    errors = x.errors;
+    errorsSignUp = x.errors;
     try {
         if(addAccessToken != null && addRefreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);

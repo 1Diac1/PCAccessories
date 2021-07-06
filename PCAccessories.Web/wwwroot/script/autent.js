@@ -1,7 +1,7 @@
 const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken;
-let errors = [];
+let errorsSignIn = [];
 let ConfirmPassword = errors.ConfirmPassword;
 
 function signIn() {
@@ -21,7 +21,7 @@ function signIn() {
 function callBack(x) {
     accessToken = x.accessToken
     refreshToken = x.refreshToken
-    errors = x.errors;
+    errorsSignIn = x.errors;
     try {
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);
