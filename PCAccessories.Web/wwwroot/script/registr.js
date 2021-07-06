@@ -6,8 +6,8 @@ let addAccessToken, addRefreshToken, errorUp;
 
 function signUp() {
     axios.post('http://localhost:3161/api/register', {
-    username:checkLogin.value,
-    password: checkPass.value,
+    username:login.value,
+    password: password.value,
     mail: mail.value,
     confirmpassword: confirmpassword.value
     })
