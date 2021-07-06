@@ -2,16 +2,19 @@ const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken, errorIn;
 
-function signIn() {
-    axios.post('http://localhost:3161/api/login', {
-    username:checkLogin.value,
-    password: checkPass.value,
+function signIn(){
+    fetch('http:localhost:3161/api/login',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf8'
+    },
+    body: JSON.stringfy({
+        username: checkLogin.value,
+        password: checkPass.value,
     })
-    .then(res => res.json())
+    })
+    .then(response => response.json())
     .then(json => callBack(json))
-    .catch(function (error) {
-        alert(error)
-})
 }
 function callBack(x) {
     accessToken = x.accessToken;
@@ -26,7 +29,7 @@ function callBack(x) {
         console.log(error)
     }
 }
-let accessToken = localStorage.getItem('accessToken');
-if(accessToken != null) {
+let token = localStorage.getItem('accessToken');
+if(token != null) {
     window.location.replace('home.html');
 }
