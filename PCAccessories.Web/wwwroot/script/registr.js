@@ -4,7 +4,8 @@ const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken, errorUp;
 
-axios.post('http://localhost:3161/api/register', {
+function signUp() {
+    axios.post('http://localhost:3161/api/register', {
     username:login.value,
     password: password.value,
     confirmpassword: confirmpassword.value,
@@ -14,3 +15,4 @@ axios.post('http://localhost:3161/api/register', {
         alert('Заявка отправлена');})
     .catch(function (error) {
         alert(error)})
+}
