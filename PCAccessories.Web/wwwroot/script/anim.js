@@ -4,6 +4,3 @@ $('#signUp').click(() => {
 $('#signIn').click(() => {
 	$('#container').removeClass('right-panel-active')
 })
-
-
- 

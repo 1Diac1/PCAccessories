@@ -1,5 +1,6 @@
 let container = document.getElementsByClassName('container');
 let img = document.getElementsByTagName('img');
+let enterOfProfile = document.getElementById('EnterOrProfile')
 
 for(let i = 0; i < container.length; i++) {
     container[i].style.display = 'none';
@@ -27,3 +28,8 @@ window.addEventListener('scroll', function() {
         container[2].style.animation = 'block-from-left 1s ease-in-out';
     }
 });
+let token = localStorage.getItem('accessToken');
+if(token != null) {
+    enterOfProfile.innerHTML = 'Кабинет';
+    enterOfProfile.setAttribute('href', 'test/index.html')
+}

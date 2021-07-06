@@ -2,6 +2,7 @@ const login = document.getElementById('username');
 const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
+let addAccessToken, addRefreshToken;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -16,7 +17,17 @@ function signUp() {
         email: mail.value,
     })
     })
-    .then((data) => {
-        console.log(data);
-    });
+    .then(response => response.json())
+    .then(json => callBack(json));
 } 
+function callBack(x) {
+    addAccessToken = x.accessToken
+    addRefreshToken = x.refreshToken
+    try {
+        localStorage.setItem('accessToken', addAccessToken);
+        localStorage.setItem('refreshToken', addRefreshToken);
+        window.location.replace('index.html');
+    } catch(err) {
+        console.log(err)
+    }
+}
