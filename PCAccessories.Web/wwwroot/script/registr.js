@@ -2,7 +2,7 @@ const login = document.getElementById('username');
 const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
-let addAccessToken, addRefreshToken;
+let addAccessToken, addRefreshToken, errorsUp;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -24,6 +24,7 @@ function callBack(x) {
 
     addAccessToken = x.accessToken;
     addRefreshToken = x.refreshToken;
+    
 
     try {
         if(addAccessToken != null && addRefreshToken != null) {
