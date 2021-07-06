@@ -1,6 +1,8 @@
 const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken;
+let errors = [];
+let ConfirmPassword = errors.ConfirmPassword;
 
 function signIn() {
 	fetch('http://localhost:3161/api/login', {
@@ -26,7 +28,7 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-        alert(errors);
+        alert(ConfirmPassword);
     } catch(errors) {
         alert(err)
     }
