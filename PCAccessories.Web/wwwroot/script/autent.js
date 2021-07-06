@@ -8,8 +8,15 @@ function signIn() {
     password: checkPass.value,
     })
     .then(res => {
+        accessToken = res.accessToken;
+        refreshToken = res.refreshToken;
+
+        if(accessToken != null && refreshToken != null) {
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
+        }
+        window.location.replace('index.html');
         alert('Заявка отправлена');
-        console.log(res)
 })
     .catch(function (error) {
         alert(error)
