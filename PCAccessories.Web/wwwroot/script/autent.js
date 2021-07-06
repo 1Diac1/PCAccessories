@@ -20,13 +20,13 @@ function callBack(x) {
     accessToken = x.accessToken
     refreshToken = x.refreshToken
     errors = x.errors;
+    alert(errors);
     try {
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
             window.location.replace('home.html');
         }
-        alert(errors);
     } catch(errors) {
         alert(errors);
     }
