@@ -16,7 +16,6 @@ function signIn() {
     })
     .then(response => response.json())
     .then(json => callBack(json))
-    .then(error => checkErrorsIn())
 } 
 function callBack(x) {
     accessToken = x.accessToken
@@ -31,15 +30,5 @@ function callBack(x) {
         alert(errors);
     } catch(errors) {
         alert(err)
-    }
-}
-function checkErrorsIn() {
-    switch (errors) {
-        case (checkLogin.value == null):
-            alert('Введите логин')
-            break;
-        case (checkPass.value == null):
-            alert('Введите пароль')
-            break;
     }
 }

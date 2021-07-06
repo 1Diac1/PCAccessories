@@ -19,7 +19,6 @@ function signUp() {
     })
     .then(response => response.json())
     .then(json => callBack(json))
-    .then(Error => checkErrorsUp());
 } 
 function callBack(x) {
 
@@ -35,22 +34,6 @@ function callBack(x) {
     } 
     catch(err) {
         alert(err)
-    }
-}
-function checkErrorsUp() {
-    switch (errors) {
-        case (login.value == null):
-            alert('Введите логин')
-            break;
-        case (password.value == null):
-            alert('Введите пароль')
-            break;
-        case (mail.value == null):
-            alert('Введите почту')
-            break;
-        case (confirmpassword.value == null):
-            alert('Подтвердите пароль')
-            break;
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');
