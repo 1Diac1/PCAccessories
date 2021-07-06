@@ -65,7 +65,7 @@ namespace PCAccessories.Application.IdentityService
 
             AuthUserResponse response = await _authenticator.Authenticate(user);
 
-            return new AuthResult{ Success = true, AccessToken = response.AccessToken };
+            return new AuthResult{ Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
         }
 
         public async Task<AuthResult> LoginAsync(LoginRequest request)

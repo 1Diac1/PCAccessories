@@ -43,6 +43,7 @@ namespace PCAccessories.Web.Api.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             if (!ModelState.IsValid)
@@ -53,7 +54,7 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken });
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
         
         [HttpPost("login")]
@@ -68,8 +69,6 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            SetRefreshTokenInCookie(authResponse.RefreshToken);
-
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
@@ -83,11 +82,6 @@ namespace PCAccessories.Web.Api.Controllers
 
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
-
-            var refreshToken = Request.Cookies[".AspNetCore.Application.Id"];
-
-            if (!string.IsNullOrEmpty(authResponse.RefreshToken))
-                SetRefreshTokenInCookie(authResponse.RefreshToken);
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }

@@ -5,12 +5,12 @@ const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken, errorUp;
 
 function signUp(){
-    fetch('http:localhost:3161/api/login',{
+    fetch('http://localhost:3161/api/register',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf8'
     },
-    body: JSON.stringfy({
+    body: JSON.stringify({
         username: login.value,
         password: password.value,
         email: mail.value,

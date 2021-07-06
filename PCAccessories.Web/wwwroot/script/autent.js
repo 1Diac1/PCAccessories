@@ -3,12 +3,12 @@ const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken, errorIn;
 
 function signIn(){
-    fetch('http:localhost:3161/api/login',{
+    fetch('http://localhost:3161/api/login',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf8'
     },
-    body: JSON.stringfy({
+    body: JSON.stringify({
         username: checkLogin.value,
         password: checkPass.value,
     })
