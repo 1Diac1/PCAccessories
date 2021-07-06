@@ -17,8 +17,8 @@ function signIn() {
     .then(json => callBack(json))
 } 
 function callBack(x) {
-    x.accessToken = accessToken;
-    x.refreshToken = refreshToken
+    accessToken = x.accessToken
+    refreshToken = x.refreshToken
     try {
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
