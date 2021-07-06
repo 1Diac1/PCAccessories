@@ -12,7 +12,11 @@ function signIn() {
         password: checkPass.value,
     })
     })
-    .then((data) => {
-        console.log(data);
+    .then(() => {
+        try {
+            window.location.replace('index.html');
+        } catch(err) {
+            console.log(err)
+        }
     });
 } 
