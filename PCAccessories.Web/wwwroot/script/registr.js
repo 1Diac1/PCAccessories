@@ -14,5 +14,6 @@ function signUp() {
     .then(res => {
         alert('Заявка отправлена');})
     .catch(function (error) {
-        alert(error)})
+        alert(error)
+})
 }
