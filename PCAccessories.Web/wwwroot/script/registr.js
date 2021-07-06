@@ -31,10 +31,10 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         } else {
-            alert(errors);
+            alert(errors[0]);
         }
-    } catch(errors) {
-        alert(errors)
+    } catch(err) {
+        alert(err)
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');

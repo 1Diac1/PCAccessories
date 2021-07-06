@@ -27,7 +27,7 @@ function callBack(x) {
             window.location.replace('home.html');
         }
     } catch(errors) {
-        alert(errors);
+        alert(errors[0]);
         if(checkPass == null || checkLogin == null) {
             alert(errors.Username)
             alert(errors.Password)
