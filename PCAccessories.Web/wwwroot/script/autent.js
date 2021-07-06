@@ -19,14 +19,15 @@ function signIn() {
 function callBack(x) {
     accessToken = x.accessToken
     refreshToken = x.refreshToken
-    alert(x.errors);
+    errors = x.errors;
     try {
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
+        alert(errors);
     } catch(err) {
-        console.log(err)
+        alert(err)
     }
 }
