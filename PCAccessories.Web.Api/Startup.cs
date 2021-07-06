@@ -76,6 +76,7 @@ namespace PCAccessories.Web.Api
             }
             ).AddJwtBearer(o =>
             {
+                o.RequireHttpsMetadata = false;
                 o.SaveToken = true;
                 o.TokenValidationParameters = new TokenValidationParameters()
                 {
@@ -94,12 +95,6 @@ namespace PCAccessories.Web.Api
                 options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
             });
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -116,7 +111,6 @@ namespace PCAccessories.Web.Api
 
             app.UseCors(CorsName);
 
-            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 

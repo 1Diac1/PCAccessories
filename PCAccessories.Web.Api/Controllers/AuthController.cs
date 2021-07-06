@@ -68,13 +68,12 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            SetRefreshTokenInCookie("3213123");
+            SetRefreshTokenInCookie(authResponse.RefreshToken);
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
         [HttpPost("refresh")]
-        [AllowAnonymous]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)
         {
             if (!ModelState.IsValid)
@@ -85,11 +84,15 @@ namespace PCAccessories.Web.Api.Controllers
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
+            var refreshToken = Request.Cookies[".AspNetCore.Application.Id"];
+
+            if (!string.IsNullOrEmpty(authResponse.RefreshToken))
+                SetRefreshTokenInCookie(authResponse.RefreshToken);
+
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
         [HttpGet("users")]
-        [AllowAnonymous]
         public async Task<IActionResult> GetAllUsers()
         {
             List<string> list = new List<string>();
@@ -106,8 +109,8 @@ namespace PCAccessories.Web.Api.Controllers
         {
             var cookieOptions = new CookieOptions
             {
-                HttpOnly = true,
-                MaxAge = TimeSpan.FromDays(90)
+                MaxAge = TimeSpan.FromDays(90),
+                HttpOnly = true
             };
 
             Response.Cookies.Append(".AspNetCore.Application.Id", refreshToken, cookieOptions); 
