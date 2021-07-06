@@ -8,7 +8,7 @@ function signIn(){
     headers: {
         'Content-Type': 'application/json;charset=utf8'
     },
-    body: JSON.stringfy({
+    body: JSON.stringify({
         username: checkLogin.value,
         password: checkPass.value,
     })

@@ -10,7 +10,7 @@ function signUp(){
     headers: {
         'Content-Type': 'application/json;charset=utf8'
     },
-    body: JSON.stringfy({
+    body: JSON.stringify({
         username: login.value,
         password: password.value,
         email: mail.value,
