@@ -33,8 +33,8 @@ function callBack(x) {
         } else {
             alert(errors);
         }
-    } catch(err) {
-        console.log(err);
+    } catch(errors) {
+        alert(errors)
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');

@@ -19,13 +19,18 @@ function signIn() {
 function callBack(x) {
     accessToken = x.accessToken
     refreshToken = x.refreshToken
+    errors = x.errors;
     try {
         if(accessToken != null && refreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-    } catch(err) {
-        alert(err);
+    } catch(errors) {
+        alert(errors);
+        if(checkPass == null || checkLogin == null) {
+            alert(errors.login)
+            alert(errors.password)
+        }
     }
 }
