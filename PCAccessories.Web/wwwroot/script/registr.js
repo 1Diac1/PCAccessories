@@ -8,7 +8,7 @@ function signUp() {
     axios.post('http://localhost:3161/api/register', {
     username:login.value,
     password: password.value,
-    mail: mail.value,
+    email: mail.value,
     confirmpassword: confirmpassword.value
     })
     .then(res => res.json())
