@@ -28,6 +28,7 @@ window.addEventListener('scroll', function() {
         container[2].style.animation = 'block-from-left 1s ease-in-out';
     }
 });
+localStorage.setItem('accessToken', 1)
 let token = localStorage.getItem('accessToken');
 if(token != null) {
     enterOfProfile.innerHTML = 'Кабинет';

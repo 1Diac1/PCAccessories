@@ -31,3 +31,7 @@ function callBack(x) {
         console.log(err)
     }
 }
+let tokenRegister = localStorage.getItem('accessToken');
+if(tokenRegister != null) {
+    window.location.replace('../test/index.html');
+}
