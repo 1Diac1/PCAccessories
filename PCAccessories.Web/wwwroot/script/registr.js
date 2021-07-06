@@ -30,9 +30,8 @@ function callBack(x) {
             localStorage.setItem('accessToken', addAccessToken);
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
-        } else {
-            alert(errors[0]);
         }
+        alert(errors)
     } catch(err) {
         alert(err)
     }

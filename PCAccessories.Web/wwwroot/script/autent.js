@@ -26,10 +26,6 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-        if(checkPass == null || checkLogin == null) {
-            alert(errors.Username)
-            alert(errors.Password)
-        }
         alert(errors);
     } catch(errors) {
         alert(err)
