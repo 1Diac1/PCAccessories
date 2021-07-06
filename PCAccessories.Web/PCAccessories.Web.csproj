@@ -11,7 +11,6 @@
     <Content Remove="wwwroot\img\user.png" />
     <Content Remove="wwwroot\img\videokarta.png" />
     <Content Remove="wwwroot\script.js" />
-    <Content Remove="wwwroot\script\registr.js" />
     <Content Remove="wwwroot\script\script.js" />
     <Content Remove="wwwroot\style.css" />
     <Content Remove="wwwroot\styles\form.css" />
@@ -35,7 +34,6 @@
     <None Include="wwwroot\img\videokarta.png" />
     <None Include="wwwroot\index.html" />
     <None Include="wwwroot\script.js" />
-    <None Include="wwwroot\script\registr.js" />
     <None Include="wwwroot\script\script.js" />
     <None Include="wwwroot\style.css" />
     <None Include="wwwroot\styles\form.css" />
