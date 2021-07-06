@@ -3,6 +3,8 @@ const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken;
+let errorsSignUp = [];
+let ConfirmPassword = errorsSignIn.ConfirmPassword;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -30,7 +32,7 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-        alert(errors)
+        alert(errorsSignUp)
     } catch(err) {
         alert(err)
     }
