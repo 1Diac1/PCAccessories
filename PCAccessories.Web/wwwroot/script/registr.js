@@ -22,17 +22,19 @@ function signUp() {
     .then(json => callBack(json));
 } 
 function callBack(x) {
-    addAccessToken = x.accessToken
-    addRefreshToken = x.refreshToken
+    addAccessToken = x.accessToken;
+    addRefreshToken = x.refreshToken;
     errors = x.errors;
     try {
         if(addAccessToken != null && addRefreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
+        } else {
+            alert(errors);
         }
-    } catch(errors) {
-        alert(errors)
+    } catch(err) {
+        alert(err)
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');
