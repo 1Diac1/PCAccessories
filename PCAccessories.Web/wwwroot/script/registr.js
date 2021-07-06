@@ -3,8 +3,6 @@ const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken;
-let errorsSignUp = [];
-let ConfirmPassword = errorsSignIn.ConfirmPassword;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
@@ -20,21 +18,39 @@ function signUp() {
     })
     })
     .then(response => response.json())
-    .then(json => callBack(json));
+    .then(json => callBack(json))
+    .then(Error => checkErrorsUp());
 } 
 function callBack(x) {
+
     addAccessToken = x.accessToken;
     addRefreshToken = x.refreshToken;
-    errorsSignUp = x.errors;
+
     try {
         if(addAccessToken != null && addRefreshToken != null) {
             localStorage.setItem('accessToken', addAccessToken);
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-        alert(errorsSignUp)
-    } catch(err) {
+    } 
+    catch(err) {
         alert(err)
+    }
+}
+function checkErrorsUp() {
+    switch (errors) {
+        case (login.value == null):
+            alert('Введите логин')
+            break;
+        case (password.value == null):
+            alert('Введите пароль')
+            break;
+        case (mail.value == null):
+            alert('Введите почту')
+            break;
+        case (confirmpassword.value == null):
+            alert('Подтвердите пароль')
+            break;
     }
 }
 let tokenRegister = localStorage.getItem('accessToken');
