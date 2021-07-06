@@ -3,7 +3,7 @@ const mail = document.getElementById('mail')
 const password = document.getElementById('password');
 const confirmpassword = document.getElementById('confirmpassword');
 let addAccessToken, addRefreshToken;
-let errors = [];
+let errors;
 
 function signUp() {
     fetch('http://localhost:3161/api/register', {
