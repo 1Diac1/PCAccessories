@@ -29,8 +29,8 @@ function callBack(x) {
     } catch(errors) {
         alert(errors);
         if(checkPass == null || checkLogin == null) {
-            alert(errors.login)
-            alert(errors.password)
+            alert(errors.Username)
+            alert(errors.Password)
         }
     }
 }
