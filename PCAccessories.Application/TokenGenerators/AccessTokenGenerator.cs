@@ -28,7 +28,7 @@ namespace PCAccessories.Application.TokenGenerators
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, "Admin")
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, "User")
             };
 
             return _tokenGenerator.GenerateToken(

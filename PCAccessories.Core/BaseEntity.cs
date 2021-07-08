@@ -9,8 +9,15 @@ namespace PCAccessories.Core
     public class BaseEntity
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime ModificationDate { get; set; }
+        public Guid CreatodId { get; set; }
+        public Guid ModifierId { get; set; }
+
+        protected BaseEntity()
+        {
+            Id = Guid.NewGuid();
+            CreationDate = DateTime.Now;
+        }
     }
 }

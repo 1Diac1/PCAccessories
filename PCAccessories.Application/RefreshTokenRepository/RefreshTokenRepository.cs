@@ -11,9 +11,9 @@ namespace PCAccessories.Application.RefreshTokenRepository
 {
     public class RefreshTokenRepository : IRefreshTokenRepository
     {
-        private readonly UserContext _context;
+        private readonly Infrastructure.AppDbContext _context;
 
-        public RefreshTokenRepository(UserContext context)
+        public RefreshTokenRepository(Infrastructure.AppDbContext context)
         {
             _context = context;
         }

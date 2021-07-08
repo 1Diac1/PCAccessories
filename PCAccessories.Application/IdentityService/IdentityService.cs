@@ -21,20 +21,17 @@ namespace PCAccessories.Application.IdentityService
         private readonly Authenticator _authenticator;
         private readonly RefreshTokenValidator _refreshTokenValidator;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
-        private readonly UserContext _context;
 
         public IdentityService(
             UserManager<IdentityUser> userManager,
             Authenticator authenticator,
             RefreshTokenValidator refreshTokenValidator,
-            IRefreshTokenRepository refreshTokenRepository, 
-            UserContext context)
+            IRefreshTokenRepository refreshTokenRepository)
         {
             _userManager = userManager;
             _authenticator = authenticator;
             _refreshTokenValidator = refreshTokenValidator;
             _refreshTokenRepository = refreshTokenRepository;
-            _context = context;
         }
 
         public async Task<AuthResult> RegisterAsync(RegisterRequest request)

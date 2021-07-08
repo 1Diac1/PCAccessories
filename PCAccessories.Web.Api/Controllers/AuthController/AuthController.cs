@@ -1,45 +1,23 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PCAccessories.Application.Authenticators;
 using PCAccessories.Application.IdentityService;
-using PCAccessories.Application.RefreshTokenRepository;
-using PCAccessories.Application.TokenValidators;
-using PCAccessories.Core;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Responses;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Web.Api.Controllers
+namespace PCAccessories.Web.Api.Controllers.AuthController
 {
     [Route("api")]
     [ApiController]
     public class AuthController : Controller
     {
         private readonly IIdentityService _identityService;
-        private readonly Authenticator _authenticator;
-        private readonly RefreshTokenValidator _refreshTokenValidator;
-        private readonly IRefreshTokenRepository _refreshTokenRepository;
-        private readonly UserManager<IdentityUser> _userManager;
 
-        public AuthController(
-            IIdentityService identityService,
-            Authenticator authenticator,
-            RefreshTokenValidator refreshTokenValidator,
-            IRefreshTokenRepository refreshTokenRepository, 
-            UserManager<IdentityUser> userManager)
+        public AuthController(IIdentityService identityService)
         {
             _identityService = identityService;
-            _authenticator = authenticator;
-            _refreshTokenValidator = refreshTokenValidator;
-            _refreshTokenRepository = refreshTokenRepository;
-            _userManager = userManager;
         }
 
         [HttpPost("register")]
@@ -87,6 +65,7 @@ namespace PCAccessories.Web.Api.Controllers
         }
 
         [HttpGet("users")]
+        [Authorize]
         public async Task<IActionResult> GetAllUsers()
         {
             List<string> list = new List<string>();
@@ -94,20 +73,7 @@ namespace PCAccessories.Web.Api.Controllers
             for (int i = 0; i < 10; i++)
                 list.Add(i.ToString());
 
-            SetRefreshTokenInCookie("123");
-
             return Ok(list);
-        }
-
-        private void SetRefreshTokenInCookie(string refreshToken)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                MaxAge = TimeSpan.FromDays(90),
-                HttpOnly = true
-            };
-
-            Response.Cookies.Append(".AspNetCore.Application.Id", refreshToken, cookieOptions); 
         }
     }
 }

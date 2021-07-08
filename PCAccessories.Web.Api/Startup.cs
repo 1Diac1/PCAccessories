@@ -15,8 +15,11 @@ using PCAccessories.Application;
 using PCAccessories.Application.Authenticators;
 using PCAccessories.Application.IdentityService;
 using PCAccessories.Application.RefreshTokenRepository;
+using PCAccessories.Application.Services;
+using PCAccessories.Application.Services.ProductService;
 using PCAccessories.Application.TokenGenerators;
 using PCAccessories.Application.TokenValidators;
+using PCAccessories.Core.Entities;
 using PCAccessories.Helpers.Authentication;
 using PCAccessories.Infrastructure;
 using System;
@@ -53,11 +56,11 @@ namespace PCAccessories.Web.Api
             JWTConfiguration jwtConfiguration = new JWTConfiguration();
             Configuration.Bind("Authentication", jwtConfiguration);
 
-            services.AddDbContext<UserContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<UserContext>();
+                .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddSingleton(jwtConfiguration);
             services.AddScoped<Authenticator>();
@@ -65,6 +68,7 @@ namespace PCAccessories.Web.Api
             services.AddScoped<AccessTokenGenerator>();
             services.AddScoped<RefreshTokenGenerator>();
             services.AddScoped<RefreshTokenValidator>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
