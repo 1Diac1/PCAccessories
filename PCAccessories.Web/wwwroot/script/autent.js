@@ -28,7 +28,7 @@ function callBack(x) {
             window.location.replace('home.html');
         }
         alert(errors)
-    } catch(errors.) {
+    } catch(errors) {
         alert(errors)
     }
 }

@@ -56,7 +56,8 @@ namespace PCAccessories.Web.Api
             JWTConfiguration jwtConfiguration = new JWTConfiguration();
             Configuration.Bind("Authentication", jwtConfiguration);
 
-            services.AddDbContext<AppDbContext>();
+            services.AddDbContext<AppDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppDbContext>();
