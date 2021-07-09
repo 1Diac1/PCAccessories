@@ -32,10 +32,6 @@
     <None Include="wwwroot\img\pc.png" />
     <None Include="wwwroot\img\user.png" />
     <None Include="wwwroot\img\videokarta.png" />
-    <None Include="wwwroot\index.html" />
-    <None Include="wwwroot\script.js" />
-    <None Include="wwwroot\script\script.js" />
-    <None Include="wwwroot\style.css" />
     <None Include="wwwroot\styles\form.css" />
     <None Include="wwwroot\styles\registr.css" />
   </ItemGroup>

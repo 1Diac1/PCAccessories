@@ -10,11 +10,14 @@ using PCAccessories.Application.Services.ProductService;
 using Microsoft.AspNetCore.Identity;
 using PCAccessories.Application.Services.ProductRepository.Dto;
 using PCAccessories.Core.Requests.Product;
+using PCAccessories.Web.Api.Contracts.V1;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace PCAccessories.Web.Api.Controllers.Product
 {
-    [Route("api")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -28,13 +31,13 @@ namespace PCAccessories.Web.Api.Controllers.Product
             _userManager = userManager;
         }
 
-        [HttpGet("product/products")]
+        [HttpGet(ApiRoutes.Product.GetAll)]
         public async Task<IActionResult> GetProducts()
         {
             return Ok(await _productService.GetAllAsync());
         }
 
-        [HttpGet("product/get")]
+        [HttpGet(ApiRoutes.Product.Get)]
         public async Task<IActionResult> GetById([FromRoute] Guid productId)
         {
             var product = await _productService.GetByIdAsync(productId);
@@ -45,23 +48,57 @@ namespace PCAccessories.Web.Api.Controllers.Product
             return Ok(product);
         }
 
-        [HttpPost("product/create")]
+        [HttpPost(ApiRoutes.Product.Create)]
         public async Task<IActionResult> Create([FromBody] CreateProductRequest request)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var product = new PCAccessories.Core.Entities.Product()
+            var product = new PCAccessories.Core.Entities.Product.Product()
             {
                 Title = request.Title,
                 Description = request.Description,
                 Price = request.Price,
-                ProductColor = request.ProductColor,
-                IsAvailable = request.IsAvailable
+                IsAvailable = request.IsAvailable,
+                CreationDate = DateTime.Now
             };
+
+            if (product == null)
+                return NotFound();
 
             await _productService.CreateAsync(product);
 
             return Ok();
         }
 
+        [HttpPost(ApiRoutes.Product.Update)]
+        public async Task<IActionResult> Update([FromRoute] Guid productId, [FromBody] UpdateProductRequest request)
+        {
+            var product = await _productService.GetByIdAsync(productId);
+
+            if (product == null)
+                return NotFound();
+
+            product.Title = request.Title;
+            product.Description = request.Description;
+            product.Price = request.Price;
+            product.IsAvailable = request.IsAvailable;
+            product.ModificationDate = DateTime.Now;
+
+            await _productService.UpdateAsync(product);
+
+            return Ok();
+        }
+
+        [HttpPost(ApiRoutes.Product.Delete)]
+        public async Task<IActionResult> Delete([FromRoute] Guid productId)
+        {
+            if (productId == null)
+                return NotFound();
+
+            var deleted = await _productService.DeleteAsync(productId);
+
+            if (deleted)
+                return Ok();
+
+            return NotFound();
+        }
     }
 }

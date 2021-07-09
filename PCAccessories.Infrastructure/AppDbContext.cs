@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PCAccessories.Core;
 using PCAccessories.Core.Entities;
+using PCAccessories.Core.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,5 @@ namespace PCAccessories.Infrastructure
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
     }
 }

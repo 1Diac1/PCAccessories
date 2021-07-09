@@ -1,5 +1,6 @@
 ﻿using PCAccessories.Application.Services.ProductRepository.Dto;
 using PCAccessories.Core.Entities;
+using PCAccessories.Core.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace PCAccessories.Application.Services.ProductService
         Task<Product> GetByIdAsync(Guid id);
         Task CreateAsync(Product product);
         Task UpdateAsync(Product product);
-        Task DeleteAsync(Guid id);
+        Task<bool> DeleteAsync(Guid id);
     }
 }

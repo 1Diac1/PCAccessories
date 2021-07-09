@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Core
+namespace PCAccessories.Core.Entities
 {
     public class BaseEntity
     {
         public Guid Id { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime ModificationDate { get; set; }
-        public Guid CreatodId { get; set; }
-        public Guid ModifierId { get; set; }
 
         protected BaseEntity()
         {

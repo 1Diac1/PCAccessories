@@ -1,4 +1,4 @@
-const checkLogin = document.getElementById('signLogin');
+﻿const checkLogin = document.getElementById('signLogin');
 const checkPass = document.getElementById('signPass');
 let accessToken, refreshToken;
 
@@ -19,7 +19,6 @@ function signIn() {
 function callBack(x) {
     accessToken = x.accessToken
     refreshToken = x.refreshToken
-    errors = x.errors
 
     try {
         if(accessToken != null && refreshToken != null) {
@@ -27,9 +26,7 @@ function callBack(x) {
             localStorage.setItem('refreshToken', addRefreshToken);
             window.location.replace('home.html');
         }
-        alert(errors)
     } catch(errors) {
-        alert(errors)
     }
 }
 let token = localStorage.getItem('accessToken');

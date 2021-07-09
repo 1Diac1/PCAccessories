@@ -11,7 +11,6 @@ namespace PCAccessories.Application.Services.ProductRepository.Dto
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string ProductColor { get; set; }
         public bool IsAvailable { get; set; }
     }
 }

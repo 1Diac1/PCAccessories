@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PCAccessories.Application.IdentityService;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Responses;
+using PCAccessories.Web.Api.Contracts.V1;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PCAccessories.Web.Api.Controllers.AuthController
 {
-    [Route("api")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthController : Controller
     {
         private readonly IIdentityService _identityService;
@@ -20,7 +22,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             _identityService = identityService;
         }
 
-        [HttpPost("register")]
+        [HttpPost(ApiRoutes.Auth.Register)]
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
@@ -35,7 +37,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
         
-        [HttpPost("login")]
+        [HttpPost(ApiRoutes.Auth.Login)]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
@@ -50,7 +52,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
 
-        [HttpPost("refresh")]
+        [HttpPost(ApiRoutes.Auth.Refresh)]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)
         {
             if (!ModelState.IsValid)
@@ -62,18 +64,6 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
-        }
-
-        [HttpGet("users")]
-        [Authorize]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            List<string> list = new List<string>();
-
-            for (int i = 0; i < 10; i++)
-                list.Add(i.ToString());
-
-            return Ok(list);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PCAccessories.Application.Services.ProductRepository.Dto;
 using PCAccessories.Core.Entities;
+using PCAccessories.Core.Entities.Product;
 using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,6 @@ namespace PCAccessories.Application.Services.ProductService
                 Title = x.Title,
                 Description = x.Description,
                 Price = x.Price,
-                ProductColor = x.ProductColor,
                 IsAvailable = x.IsAvailable
             }).ToListAsync();
 
@@ -52,12 +52,17 @@ namespace PCAccessories.Application.Services.ProductService
             }
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (product != null)
-                _context.Products.Remove(product);
+            if (product == null)
+                return false;
+
+            _context.Products.Remove(product);
+            var deleted = await _context.SaveChangesAsync();
+
+            return deleted > 0;
         }
     }
 }

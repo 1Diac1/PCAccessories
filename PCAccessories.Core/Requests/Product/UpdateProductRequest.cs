@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PCAccessories.Core.Requests.Product
 {
-    public class CreateProductRequest
+    public class UpdateProductRequest
     {
         [Required(ErrorMessage = "Введите название")]
         public string Title { get; set; }
