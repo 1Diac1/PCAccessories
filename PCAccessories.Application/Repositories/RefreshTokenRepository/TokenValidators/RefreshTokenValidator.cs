@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Application.TokenValidators
+namespace PCAccessories.Application.Repositories.RefreshTokenRepository.TokenValidators
 {
     public class RefreshTokenValidator
     {

@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using PCAccessories.Application.Authenticators;
-using PCAccessories.Application.RefreshTokenRepository;
-using PCAccessories.Application.TokenValidators;
+using PCAccessories.Application.Repositories.RefreshTokenRepository;
+using PCAccessories.Application.Repositories.RefreshTokenRepository.Authenticators;
+using PCAccessories.Application.Repositories.RefreshTokenRepository.TokenValidators;
 using PCAccessories.Core;
 using PCAccessories.Core.Requests;
+using PCAccessories.Core.Requests.Identity;
 using PCAccessories.Core.Responses;
-using PCAccessories.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Application.IdentityService
+namespace PCAccessories.Application.Services.IdentityService
 {
     public class IdentityService : IIdentityService
     {
@@ -62,7 +61,7 @@ namespace PCAccessories.Application.IdentityService
 
             AuthUserResponse response = await _authenticator.Authenticate(user);
 
-            return new AuthResult{ Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
+            return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
         }
 
         public async Task<AuthResult> LoginAsync(LoginRequest request)
@@ -76,7 +75,7 @@ namespace PCAccessories.Application.IdentityService
 
             if (userHasValidPassword == false)
                 return new AuthResult { Errors = new[] { "Логин или пароль неверный" } };
-            
+
             AuthUserResponse response = await _authenticator.Authenticate(user);
 
             return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
@@ -105,6 +104,5 @@ namespace PCAccessories.Application.IdentityService
 
             return new AuthResult { Success = true, AccessToken = response.AccessToken, RefreshToken = response.RefreshToken };
         }
-
     }
 }

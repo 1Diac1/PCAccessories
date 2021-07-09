@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using PCAccessories.Application.RefreshTokenRepository;
-using PCAccessories.Application.TokenGenerators;
+using PCAccessories.Application.Repositories.RefreshTokenRepository.TokenGenerators;
 using PCAccessories.Core;
 using PCAccessories.Core.Responses;
 using System;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Application.Authenticators
+namespace PCAccessories.Application.Repositories.RefreshTokenRepository.Authenticators
 {
     public class Authenticator
     {
@@ -18,8 +17,8 @@ namespace PCAccessories.Application.Authenticators
         private readonly IRefreshTokenRepository _refreshTokenRepository;
 
         public Authenticator(
-            AccessTokenGenerator accessTokenGenerator, 
-            RefreshTokenGenerator refreshTokenGenerator, 
+            AccessTokenGenerator accessTokenGenerator,
+            RefreshTokenGenerator refreshTokenGenerator,
             IRefreshTokenRepository refreshTokenRepository)
         {
             _accessTokenGenerator = accessTokenGenerator;

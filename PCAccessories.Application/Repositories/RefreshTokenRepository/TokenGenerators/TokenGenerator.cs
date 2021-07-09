@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Application.TokenGenerators
+namespace PCAccessories.Application.Repositories.RefreshTokenRepository.TokenGenerators
 {
     public class TokenGenerator
     {

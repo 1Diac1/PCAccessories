@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCAccessories.Application.RefreshTokenRepository
+namespace PCAccessories.Application.Repositories.RefreshTokenRepository
 {
     public interface IRefreshTokenRepository
     {
