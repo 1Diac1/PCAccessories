@@ -17,6 +17,7 @@ $(function () {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
                 alert(JSON.stringify(data));
+                alert(JSON.stringify(data.responseJSON.errors.Email));
             });
         });
     })
