@@ -1,22 +1,22 @@
-$(function () {
-        $('#submit').click(function (e) {
-            e.preventDefault();
-            let data = {
-                Login: $('#username').val(),
-                Email: $('#mail').val(),
-                Password: $('#password').val(),
-                ConfirmPassword: $('#confirmpassword').val()
-            };
- 
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:3161/api/v1/auth/register',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(data)
-            }).success(function (data) {
-                alert("Регистрация пройдена");
-            }).fail(function (data) {
-                alert("В процесе регистрации возникла ошибка");
-            });
-        });
-    })
+$('#submit').click(function(){
+
+    let userLog = $.trim($('#log').val());
+    let userPas = $.trim($('#pass').val());
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3161/api/v1/auth/register',
+        data: {user_login : userLog, user_pass: userPas},
+        error: function(req, text, error) {
+            alert('Ошибка AJAX: ' + text + ' | ' + error);
+        },
+        success: function (data) {
+            if(data[0]){
+                alert(data[1] + ', вы зарегистрированы!');
+            } else {
+                alert('Хьюстон, у нас проблемы!');
+            }
+        },
+        dataType: 'json'
+    });
+});
