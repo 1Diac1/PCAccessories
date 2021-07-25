@@ -1,22 +1,34 @@
-$('#submit').click(function(){
+const login = document.getElementById('username');
+const mail = document.getElementById('mail')
+const password = document.getElementById('password');
+const confirmpassword = document.getElementById('confirmpassword');
 
-    let userLog = $.trim($('#log').val());
-    let userPas = $.trim($('#pass').val());
-
-    $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3161/api/v1/auth/register',
-        data: {user_login : userLog, user_pass: userPas},
-        error: function(req, text, error) {
-            alert('Ошибка AJAX: ' + text + ' | ' + error);
-        },
-        success: function (data) {
-            if(data[0]){
-                alert(data[1] + ', вы зарегистрированы!');
-            } else {
-                alert('Хьюстон, у нас проблемы!');
-            }
-        },
-        dataType: 'json'
-    });
-});
+function signUp(){ 
+    fetch('http://localhost:3161/api/v1/auth/register',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({
+        username:login.value,
+        password: password.value,
+        confirmpassword: confirmpassword.value,
+        email: mail.value,
+    })
+    })
+    .then(response => response.json())
+    .then(json => callBack(json));
+} 
+function callBack(x) {
+    addAccessToken = x.accessToken;
+    addRefreshToken = x.refreshToken;
+    try {
+        if(addAccessToken != null && addRefreshToken != null) {
+            localStorage.setItem('accessToken', addAccessToken);
+            localStorage.setItem('refreshToken', addRefreshToken);
+            window.location.replace('home.html');
+        }
+    } catch(err) {
+        alert(err)
+    }
+}
