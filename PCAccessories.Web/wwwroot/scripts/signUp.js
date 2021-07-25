@@ -1,3 +1,4 @@
+
 $(function () {
         $('#submit').click(function (e) {
             e.preventDefault();
@@ -16,8 +17,22 @@ $(function () {
             }).success(function (data) {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
-                alert(JSON.stringify(data));
-                alert(JSON.stringify(data.responseJSON.errors.Email));
+                let something = JSON.stringify(data.responseJSON.errors)
+
+                const log =
+                [
+                        JSON.stringify(data.responseJSON.errors.Username) != null ? console.log(JSON.stringify(data.responseJSON.errors.Username[0])) : false,
+                        JSON.stringify(data.responseJSON.errors.Email) != null ? console.log(JSON.stringify(data.responseJSON.errors.Email[0])) : false,
+                        JSON.stringify(data.responseJSON.errors.Password) != null ? console.log(JSON.stringify(data.responseJSON.errors.Password[0])) : false,
+                        JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? console.log(JSON.stringify(data.responseJSON.errors.ConfirmPassword[0])) : false
+                ]
+
+                for (let i = 0; i < log.length; i++) {
+                    if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
+                        console.log(JSON.stringify(data.responseJSON.errors[i]))
+                }
+                
+
             });
         });
     })
