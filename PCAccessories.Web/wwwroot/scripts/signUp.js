@@ -2,7 +2,7 @@ $(function () {
         $('#submit').click(function (e) {
             e.preventDefault();
             let data = {
-                Login: $('#username').val(),
+                Username: $('#username').val(),
                 Email: $('#mail').val(),
                 Password: $('#password').val(),
                 ConfirmPassword: $('#confirmpassword').val()
