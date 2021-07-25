@@ -1,0 +1,80 @@
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+header h1.logo {
+  cursor: pointer;
+  position: relative;
+}
+
+header h1.logo::after, header h1.logo::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  left: 0;
+  margin-left: 35px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+header h1.logo::after {
+  top: 0;
+}
+
+header h1.logo::before {
+  top: 45px;
+}
+
+header h1.logo:hover::after, header h1.logo:hover::before {
+  width: 100%;
+  margin-left: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style-type: none;
+  width: 600px;
+  font-size: 18px;
+}
+
+header ul li {
+  display: inline-block;
+  cursor: pointer;
+  width: 130px;
+  text-align: center;
+}
+
+header ul li a {
+  color: #333;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+header ul li a:hover {
+  letter-spacing: 2px;
+  color: #333;
+}
+/*# sourceMappingURL=header.css.map */

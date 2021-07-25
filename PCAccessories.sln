@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories.Core", "PCAcc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories.Web.Api", "PCAccessories.Web.Api\PCAccessories.Web.Api.csproj", "{5011689D-7EF2-40D7-9C55-C2E61B3FEE11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Infrastructure", "PCAccessories.Infrastructure\PCAccessories.Infrastructure.csproj", "{C7E02674-8994-4114-97FF-F241C681BAC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories.Infrastructure", "PCAccessories.Infrastructure\PCAccessories.Infrastructure.csproj", "{C7E02674-8994-4114-97FF-F241C681BAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Application", "PCAccessories.Application\PCAccessories.Application.csproj", "{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories.Application", "PCAccessories.Application\PCAccessories.Application.csproj", "{86EC4FC7-66E5-4CD3-A2B6-3C16C4A162E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCAccessories.Helpers", "PCAccessories.Helpers\PCAccessories.Helpers.csproj", "{77EE7B59-2B75-4904-8556-904244D3FE98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCAccessories.Helpers", "PCAccessories.Helpers\PCAccessories.Helpers.csproj", "{77EE7B59-2B75-4904-8556-904244D3FE98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
