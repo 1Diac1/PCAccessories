@@ -16,9 +16,7 @@ $(function () {
             }).success(function (data) {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
-                alert(JSON.stringify(data[errors[0]]));
-                console.log(JSON.stringify(data[errors]));
-                console.log(JSON.stringify(data[0]));
+                alert(JSON.stringify(data));
             });
         });
     })
