@@ -23,6 +23,7 @@ $inputbg_color: #e7e3ed;
     width: 50%;
     height: 100%;
     border-radius: 10px;
+    animation: opacityBG 1s;
     form {
       @include flex(center, center);
       flex-direction: column;
@@ -126,4 +127,8 @@ footer {
   position: absolute;
   width: 100%;
   left: 0;
+}
+@keyframes opacityBG {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
