@@ -16,7 +16,7 @@ $(function () {
             }).success(function (data) {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
-                alert("В процесе регистрации возникла ошибка");
+                alert(data);
             });
         });
     })
