@@ -1,34 +1,22 @@
-const login = document.getElementById('username');
-const mail = document.getElementById('mail')
-const password = document.getElementById('password');
-const confirmpassword = document.getElementById('confirmpassword');
-
-function signUp(){ 
-    fetch('http://localhost:3161/api/v1/auth/register',{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify({
-        username:login.value,
-        password: password.value,
-        confirmpassword: confirmpassword.value,
-        email: mail.value,
+$(function () {
+        $('#submit').click(function (e) {
+            e.preventDefault();
+            let data = {
+                Login: $('#username').val(),
+                Email: $('#mail').val(),
+                Password: $('#password').val(),
+                ConfirmPassword: $('#confirmpassword').val()
+            };
+ 
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3161/api/v1/auth/register',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).success(function (data) {
+                alert("Регистрация пройдена");
+            }).fail(function (data) {
+                alert("В процесе регистрации возникла ошибка");
+            });
+        });
     })
-    })
-    .then(response => response.json())
-    .then(json => callBack(json));
-} 
-function callBack(x) {
-    addAccessToken = x.accessToken;
-    addRefreshToken = x.refreshToken;
-    try {
-        if(addAccessToken != null && addRefreshToken != null) {
-            localStorage.setItem('accessToken', addAccessToken);
-            localStorage.setItem('refreshToken', addRefreshToken);
-            window.location.replace('home.html');
-        }
-    } catch(err) {
-        alert(err)
-    }
-}
