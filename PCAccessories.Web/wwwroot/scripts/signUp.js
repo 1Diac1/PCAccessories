@@ -16,8 +16,8 @@ $(function () {
             }).success(function (data) {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
-                alert(data.errors);
-                alert(data.error);
+                alert(data.errors[0]);
+                alert(data.error[0]);
             });
         });
     })
