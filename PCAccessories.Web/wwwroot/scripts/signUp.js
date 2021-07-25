@@ -1,4 +1,4 @@
-$(function signUp() {
+function signUp() {
         $('#submit').click(function (e) {
             e.preventDefault();
             let data = {
@@ -19,4 +19,4 @@ $(function signUp() {
                 alert("В процесе регистрации возникла ошибка");
             });
         });
-    })
+}
