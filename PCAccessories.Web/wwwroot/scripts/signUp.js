@@ -10,7 +10,7 @@ $(function () {
  
             $.ajax({
                 type: 'POST',
-                url: 'api/v1/auth/register',
+                url: 'http://localhost:3161/api/v1/auth/register',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
             }).success(function (data) {
