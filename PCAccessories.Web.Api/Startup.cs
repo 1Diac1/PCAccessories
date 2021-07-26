@@ -132,7 +132,7 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
-            app.UseIpRateLimiting();
+            //app.UseIpRateLimiting();
             app.UseCors(CorsName);
 
             app.UseAuthentication();

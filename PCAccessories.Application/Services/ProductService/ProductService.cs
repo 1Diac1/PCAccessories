@@ -36,11 +36,14 @@ namespace PCAccessories.Application.Services.ProductService
 
         public async Task CreateAsync(Product product)
         {
-            if (product != null)
+            var isProductAvailable = await _context.Products.FirstOrDefaultAsync(x => x.Title == product.Title);
+
+            if (product != null && isProductAvailable == null)
             {
                 await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
             }
+            
         }
 
         public async Task UpdateAsync(Product product)

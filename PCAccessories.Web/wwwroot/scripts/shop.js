@@ -1,3 +1,5 @@
+
+
 function cb() {
   const shop_obj = document.getElementsByClassName("shop_object");
   const btn_shop = document.getElementsByClassName("addToCart");
@@ -9,10 +11,11 @@ function cb() {
     btn_shop[i].addEventListener("click", () => {
       addToCart(i);
     });
-  }
-}
-function addToCart(el) {
-  localStorage.setItem(`name_${el}`, titleShop[el].innerHTML);
-  localStorage.setItem(`description_${el}`, descriptionShop[el].innerHTML);
-  localStorage.setItem(`price_${el}`, priceShop[el].innerHTML);
+    }
+
+    function addToCart(el) {
+        localStorage.setItem(`name_${el}`, titleShop[el].innerHTML);
+        localStorage.setItem(`description_${el}`, descriptionShop[el].innerHTML);
+        localStorage.setItem(`price_${el}`, priceShop[el].innerHTML);
+    }
 }
