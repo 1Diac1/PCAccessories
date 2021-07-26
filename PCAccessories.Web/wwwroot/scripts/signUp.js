@@ -19,17 +19,17 @@ $(function () {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
                 let something = JSON.stringify(data.responseJSON.errors)
-                
+
                 const log =
                 [
-                        JSON.stringify(data.responseJSON.errors.Username) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.Username[0]) + '</li>' : false,
-                        JSON.stringify(data.responseJSON.errors.Email) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.Email[0]) + '</li>' : false,
-                        JSON.stringify(data.responseJSON.errors.Password) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.Password[0]) + '</li>' : false,
-                        JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.ConfirmPassword[0]) + '</li>' : false
+                        JSON.stringify(data.responseJSON.errors.Username) != null ? err.innerHTML = JSON.stringify(data.responseJSON.errors.Username[0]) : false,
+                        JSON.stringify(data.responseJSON.errors.Email) != null ? err.innerHTML = JSON.stringify(data.responseJSON.errors.Email[0]) : false,
+                        JSON.stringify(data.responseJSON.errors.Password) != null ? err.innerHTML = SON.stringify(data.responseJSON.errors.Password[0]) : false,
+                        JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? err.innerHTML = JSON.stringify(data.responseJSON.errors.ConfirmPassword[0]) : false
                 ]
                 for (let i = 0; i < log.length; i++) {
                     if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
-                    err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors[i].replace('"', '')) + '</li>'
+                    err.innerHTML = JSON.stringify(data.responseJSON.errors[i].replace('"', ''))
                 }
             });
         });
