@@ -10,7 +10,7 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #fff;
+  background-color: inherit;
   width: 100%;
   border-radius: 20px;
   margin-bottom: 300px;
