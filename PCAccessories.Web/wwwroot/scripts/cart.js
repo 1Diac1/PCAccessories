@@ -36,7 +36,7 @@ cartObjects.forEach((el) => {
   delBtn.innerHTML = '&#10006;';
   h1.innerHTML = (el.name != undefined) ? el.name : (obj.style.display = 'none');
   p.innerHTML = el.descrpt;
-  price.innerHTML = el.price + '&#8381;';
+  price.innerHTML = el.price;
 
 
   clearBtn.style.display = 'block';
