@@ -30,7 +30,10 @@ window.onload = (e) => {
         obj.appendChild(btn);
 
         obj.classList.add("shop_object");
-        
+        btn.classList.add('addToCart');
+        h1.classList.add('titleShop');
+        p.classList.add('descriptionShop');
+        price.classList.add('priceShop');
 
         h1.innerHTML = data[i].title;
         p.innerHTML = data[i].description;
