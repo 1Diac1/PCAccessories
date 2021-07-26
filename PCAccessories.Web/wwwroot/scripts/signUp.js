@@ -27,7 +27,9 @@ $(function () {
                         JSON.stringify(data.responseJSON.errors.Password) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.Password[0]) + '</li>' : false,
                         JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.ConfirmPassword[0]) + '</li>' : false
                 ]
-
+                for (let i = 0; i < log.length; i++) {
+                    log[i].replace('"', '');
+                }
                 for (let i = 0; i < log.length; i++) {
                     if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
                     err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors[i]) + '</li>'
