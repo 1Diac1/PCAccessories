@@ -1,0 +1,45 @@
+.shop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #fff;
+  width: 100%;
+  margin-bottom: 300px;
+  border-radius: 20px;
+  padding: 100px;
+}
+
+.shop .shop_object {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 325px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 30px;
+  margin: 10px;
+  text-align: justify;
+}
+
+.shop .shop_object h1 {
+  font-size: 20px;
+}
+/*# sourceMappingURL=shop.css.map */

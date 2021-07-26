@@ -29,6 +29,11 @@ if ($(window).width() > 770) {
 else {
   const left = document.getElementById("blockleft");
   const right = document.getElementById("blockright");
+  const img = document.getElementsByTagName("img");
+
+  for (let i = 0; i < img.length; i++) {
+    img[i].style.display = "none";
+  }
 
   left.style.display = "none";
   right.style.display = "none";

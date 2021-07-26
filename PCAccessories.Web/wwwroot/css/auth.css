@@ -196,12 +196,6 @@
   text-transform: uppercase;
 }
 
-footer {
-  position: absolute;
-  width: 100%;
-  left: 0;
-}
-
 @-webkit-keyframes opacityBG {
   0% {
     opacity: 0;
