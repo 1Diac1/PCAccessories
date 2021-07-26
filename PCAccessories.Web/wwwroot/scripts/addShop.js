@@ -1,4 +1,4 @@
-window.onload(() => {
+window.onload = () => {
   e.preventDefault();
   let data = {
     title: titleAdd,
@@ -20,6 +20,6 @@ window.onload(() => {
     .fail(function (data) {
       alert(data);
     });
-});
+};
 
 let titleAdd, descriptionAdd, priceAdd, isAvailableAdd;
