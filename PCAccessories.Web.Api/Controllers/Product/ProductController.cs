@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace PCAccessories.Web.Api.Controllers.Product
 {
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;

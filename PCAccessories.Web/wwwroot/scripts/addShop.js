@@ -1,8 +1,8 @@
-window.onload = () => {
+window.onload = (e) => {
   e.preventDefault();
   let data = {
     title: titleAdd,
-    description:descriptionAdd,
+    description : descriptionAdd,
     price: priceAdd,
     isAvailable: isAvailableAdd,
   };
@@ -14,11 +14,11 @@ window.onload = () => {
     data: JSON.stringify(data),
   })
     .success(function (data) {
-      alert("Все добавилось!");
-      alert(data);
+        alert("Все добавилось!");
+        console.log(data);
     })
     .fail(function (data) {
-      alert(data);
+        console.log(data);
     });
 };
 
