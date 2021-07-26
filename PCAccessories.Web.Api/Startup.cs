@@ -59,8 +59,16 @@ namespace PCAccessories.Web.Api
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                    {
+                        options.SignIn.RequireConfirmedAccount = true;
+                        options.Password.RequiredLength = 6;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequireLowercase = true;
+                        options.Password.RequireUppercase = true;
+                        options.Password.RequireDigit = true;
+                    })
+                    .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddSingleton(jwtConfiguration);
             services.AddScoped<Authenticator>();
