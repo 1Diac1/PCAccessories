@@ -22,6 +22,10 @@ $(function () {
                         JSON.stringify(data.responseJSON.errors.Username) != null ? err.innerHTML = JSON.stringify(data.responseJSON.errors.Username[0]).replace(/"/g, "") : false,
                         JSON.stringify(data.responseJSON.errors.Password) != null ? err.innerHTML = JSON.stringify(data.responseJSON.errors.Password[0]).replace(/"/g, "") : false,
                 ]
+                for (let i = 0; i < log.length; i++) {
+                    if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
+                        err.innerHTML = JSON.stringify(data.responseJSON.errors[i]).replace(/"/g, "");
+                }
             });
         });
     })
