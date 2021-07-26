@@ -18,20 +18,25 @@ cartObjects.forEach((el) => {
   let h1 = document.createElement("h1");
   let p = document.createElement("p");
   let price = document.createElement("h3");
+  let delBtn = document.createElement('div')
 
   obj.classList.add("object");
+  delBtn.classList.add('del')
   h1.classList.add("title");
   p.classList.add("description");
   price.classList.add("price");
 
   cart.appendChild(obj);
+  obj.appendChild(delBtn);
   obj.appendChild(h1);
   obj.appendChild(p);
   obj.appendChild(price);
 
+  delBtn.innerHTML = '&#10006;';
   h1.innerHTML = (el.name != undefined) ? el.name : (obj.style.display = 'none');
   p.innerHTML = el.descrpt;
-  price.innerHTML = el.price;
+  price.innerHTML = el.price + '&#8381;';
+
 
   clearBtn.style.display = 'block';
 });

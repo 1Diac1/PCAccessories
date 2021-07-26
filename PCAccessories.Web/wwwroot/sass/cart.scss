@@ -9,6 +9,7 @@
   margin-bottom: 300px;
   padding: 100px;
   .object {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,11 +21,40 @@
     text-align: justify;
     background: inherit;
     box-shadow: 0 0 15px 5px #c0bcc5;
+    .counter {
+        input {
+            width: 100px;
+            height: 50px;
+            border: none;
+            outline: none;
+        }
+        button {
+            width: 75px;
+            height: 75px;
+            border: none;
+            text-align: center;
+            background: inherit;
+            h1 {
+                color: #c0bcc5;
+                font-weight: 900;
+                font-size: 40px;
+            }
+        }
+    }
+    .del {
+        cursor: pointer;
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        font-size: 25px;
+
+    }
     h1 {
       font-size: 20px;
       font-weight: 900;
     }
     h3 {
+      margin-top: 30px;
       margin-bottom: 30px;
       font-size: 20px;
       font-weight: 900;
@@ -32,7 +62,6 @@
     }
   }
   .noAny {
-    background-color: #fff;
     h1 {
       font-size: 45px;
       font-weight: 900;
