@@ -19,7 +19,7 @@ $(function () {
                 alert("Регистрация пройдена");
             }).fail(function (data) {
                 let something = JSON.stringify(data.responseJSON.errors)
-
+                
                 const log =
                 [
                         JSON.stringify(data.responseJSON.errors.Username) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.Username[0]) + '</li>' : false,
@@ -28,14 +28,9 @@ $(function () {
                         JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors.ConfirmPassword[0]) + '</li>' : false
                 ]
                 for (let i = 0; i < log.length; i++) {
-                    log[i].replace('"', '');
-                }
-                for (let i = 0; i < log.length; i++) {
                     if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
-                    err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors[i]) + '</li>'
+                    err.innerHTML = '<li>' + JSON.stringify(data.responseJSON.errors[i].replace('"', '')) + '</li>'
                 }
-                
-
             });
         });
     })
