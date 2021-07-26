@@ -33,15 +33,28 @@
           flex-direction: column;
   width: 325px;
   padding: 30px;
-  border: 1px solid black;
   border-radius: 30px;
   margin: 10px;
   text-align: justify;
+  background: inherit;
+  -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
+          box-shadow: 0 0 15px 5px #c0bcc5;
 }
 
 .cart .object h1 {
   font-size: 20px;
   font-weight: 900;
+}
+
+.cart .object h3 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.cart .noAny {
+  background-color: #fff;
 }
 
 .cart .noAny h1 {
