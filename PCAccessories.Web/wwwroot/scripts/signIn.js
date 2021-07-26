@@ -1,7 +1,7 @@
 let err = document.getElementById('err');
 
 $(function () {
-        $('#submit').click(function (e) {
+        $('#signInButton').click(function (e) {
             e.preventDefault();
             let data = {
                 Username: $('#signLogin').val(),
