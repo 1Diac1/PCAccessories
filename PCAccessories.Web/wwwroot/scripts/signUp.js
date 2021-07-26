@@ -1,3 +1,4 @@
+let err = document.getElementById('err');
 
 $(function () {
         $('#submit').click(function (e) {
@@ -21,15 +22,15 @@ $(function () {
 
                 const log =
                 [
-                        JSON.stringify(data.responseJSON.errors.Username) != null ? console.log(JSON.stringify(data.responseJSON.errors.Username[0])) : false,
-                        JSON.stringify(data.responseJSON.errors.Email) != null ? console.log(JSON.stringify(data.responseJSON.errors.Email[0])) : false,
-                        JSON.stringify(data.responseJSON.errors.Password) != null ? console.log(JSON.stringify(data.responseJSON.errors.Password[0])) : false,
-                        JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? console.log(JSON.stringify(data.responseJSON.errors.ConfirmPassword[0])) : false
+                        JSON.stringify(data.responseJSON.errors.Username) != null ? err.innerHTML('<li>' + JSON.stringify(data.responseJSON.errors.Username[0]) + '</li>') : false,
+                        JSON.stringify(data.responseJSON.errors.Email) != null ? err.innerHTML('<li>' + JSON.stringify(data.responseJSON.errors.Email[0]) + '</li>') : false,
+                        JSON.stringify(data.responseJSON.errors.Password) != null ? err.innerHTML('<li>' + JSON.stringify(data.responseJSON.errors.Password[0]) + '</li>') : false,
+                        JSON.stringify(data.responseJSON.errors.ConfirmPassword) != null ? err.innerHTML('<li>' + JSON.stringify(data.responseJSON.errors.ConfirmPassword[0]) + '</li>') : false
                 ]
 
                 for (let i = 0; i < log.length; i++) {
                     if (JSON.stringify(data.responseJSON.errors[i]) != undefined)
-                        console.log(JSON.stringify(data.responseJSON.errors[i]))
+                    err.innerHTML('<li>' + JSON.stringify(data.responseJSON.errors[i]) + '</li>')
                 }
                 
 
