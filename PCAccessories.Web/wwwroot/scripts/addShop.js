@@ -23,14 +23,14 @@ window.onload = (e) => {
         let price = document.createElement("h3");
         let btn = document.createElement("button");
 
-        obj.classList.add("shop_object");
-        btn.classList.add("btn btn-primary btn-lg");
-
         shop.appendChild(obj);
         obj.appendChild(h1);
         obj.appendChild(p);
         obj.appendChild(price);
         obj.appendChild(btn);
+
+        obj.classList.add("shop_object");
+        
 
         h1.innerHTML = data[i].title;
         p.innerHTML = data[i].description;
