@@ -10,9 +10,6 @@ for (let i = 0; i < localStorage.length; i++) {
             descrpt: localStorage.getItem(`description_${i}`),
             price: localStorage.getItem(`price_${i}`),
       };
-      delBtn.addEventListener('click', () => {
-        delete cartObjects[i];
-      });
   }
 }
 
@@ -22,6 +19,7 @@ cartObjects.forEach((el) => {
   let p = document.createElement("p");
   let price = document.createElement("h3");
   let delBtn = document.createElement('div')
+
 
   obj.classList.add("object");
   delBtn.classList.add('del')
