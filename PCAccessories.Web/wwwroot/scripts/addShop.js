@@ -39,6 +39,8 @@ window.onload = (e) => {
         p.innerHTML = data[i].description;
         price.innerHTML = data[i].price;
         btn.innerHTML = "Добавить в корзину";
+
+        cb();
       }
     })
     .fail(function (data) {
