@@ -37,7 +37,7 @@ window.onload = (e) => {
 
         h1.innerHTML = data[i].title;
         p.innerHTML = data[i].description;
-        price.innerHTML = data[i].price;
+        price.innerHTML = data[i].price + '&#8381;';
         btn.innerHTML = "Добавить в корзину";
 
         cb();

@@ -2,15 +2,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #fff;
   width: 100%;
   margin-bottom: 300px;
   border-radius: 20px;
@@ -33,13 +32,39 @@
           flex-direction: column;
   width: 325px;
   padding: 30px;
-  border: 1px solid black;
   border-radius: 30px;
   margin: 10px;
   text-align: justify;
+  background: inherit;
+  -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
+          box-shadow: 0 0 15px 5px #c0bcc5;
 }
 
 .shop .shop_object h1 {
   font-size: 20px;
+  font-weight: 900;
+}
+
+.shop .shop_object h3 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.shop .shop_object button {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid #033c51;
+  color: #fff;
+  background-color: #033c51;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.shop .shop_object button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=shop.css.map */
