@@ -2,7 +2,7 @@ const cart = document.querySelector(".cart");
 const clearBtn = document.querySelector('#clrBtn')
 const cartObjects = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < localStorage.length; i++) {
   if (localStorage.getItem(`name_${i}`) != null) {
         cartObjects.push(i);
         cartObjects[i] = {
@@ -12,7 +12,6 @@ for (let i = 0; i < 10; i++) {
       };
   }
 }
-console.log(cartObjects);
 
 cartObjects.forEach((el) => {
   let obj = document.createElement("div");
