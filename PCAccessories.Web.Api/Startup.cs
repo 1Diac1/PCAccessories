@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
@@ -44,6 +45,9 @@ namespace PCAccessories.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddOptions();
+            services.AddMemoryCache();
+
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsName, builder => builder
@@ -70,6 +74,9 @@ namespace PCAccessories.Web.Api
                     })
                     .AddEntityFrameworkStores<AppDbContext>();
 
+            services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));
+            services.Configure<IpRateLimitPolicies>(Configuration.GetSection("IpRateLimitPolicies"));
+
             services.AddSingleton(jwtConfiguration);
             services.AddScoped<Authenticator>();
             services.AddScoped<TokenGenerator>();
@@ -78,7 +85,11 @@ namespace PCAccessories.Web.Api
             services.AddScoped<RefreshTokenValidator>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
 
             services.AddAuthentication(x =>
             {
@@ -121,6 +132,7 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
+            app.UseIpRateLimiting();
             app.UseCors(CorsName);
 
             app.UseAuthentication();
