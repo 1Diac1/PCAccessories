@@ -15,7 +15,7 @@ window.onload = (e) => {
   })
     .success(function (data) {
         alert("Все добавилось!");
-        console.log(data);
+        console.log(data[0].title);
     })
     .fail(function (data) {
         console.log(data);
