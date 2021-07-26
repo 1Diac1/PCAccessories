@@ -1,8 +1,9 @@
 window.onload = (e) => {
+  let titleAdd, descriptionAdd, priceAdd, isAvailableAdd;
   e.preventDefault();
   let data = {
     title: titleAdd,
-    description : descriptionAdd,
+    description: descriptionAdd,
     price: priceAdd,
     isAvailable: isAvailableAdd,
   };
@@ -14,12 +15,30 @@ window.onload = (e) => {
     data: JSON.stringify(data),
   })
     .success(function (data) {
-        alert("Все добавилось!");
-        console.log(data[0].title);
+      for (let i = 0; i < data.length; i++) {
+        let shop = document.getElementById("shop");
+        let obj = document.createElement("div");
+        let h1 = document.createElement("h1");
+        let p = document.createElement("p");
+        let price = document.createElement("h3");
+        let btn = document.createElement("button");
+
+        obj.classList.add("shop_object");
+        btn.classList.add("btn btn-primary btn-lg");
+
+        shop.appendChild(obj);
+        obj.appendChild(h1);
+        obj.appendChild(p);
+        obj.appendChild(price);
+        obj.appendChild(btn);
+
+        h1.innerHTML = data[i].title;
+        p.innerHTML = data[i].description;
+        price.innerHTML = data[i].price;
+        btn.innerHTML = "Добавить в корзину";
+      }
     })
     .fail(function (data) {
-        console.log(data);
+      console.log(data);
     });
 };
-
-let titleAdd, descriptionAdd, priceAdd, isAvailableAdd;
