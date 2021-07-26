@@ -10,6 +10,9 @@ for (let i = 0; i < localStorage.length; i++) {
             descrpt: localStorage.getItem(`description_${i}`),
             price: localStorage.getItem(`price_${i}`),
       };
+      delBtn.addEventListener('click', () => {
+        delete cartObjects[i];
+      });
   }
 }
 
@@ -52,6 +55,8 @@ if (cartObjects.length == 0) {
   clearBtn.style.display = 'none';
   h1.innerHTML = "В корзине нет товаров";
 }
+
+
 
 function clearLocal() {
   localStorage.clear();
