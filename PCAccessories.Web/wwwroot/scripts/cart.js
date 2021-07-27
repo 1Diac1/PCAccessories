@@ -20,7 +20,6 @@ cartObjects.forEach((el) => {
   let price = document.createElement("h3");
   let delBtn = document.createElement('div')
 
-
   obj.classList.add("object");
   delBtn.classList.add('del')
   h1.classList.add("title");
@@ -36,7 +35,7 @@ cartObjects.forEach((el) => {
   delBtn.innerHTML = '&#10006;';
   h1.innerHTML = (el.name != undefined) ? el.name : (obj.style.display = 'none');
   p.innerHTML = el.descrpt;
-  price.innerHTML = el.price;
+  price.innerHTML = el.price + '&#8381;';
 
 
   clearBtn.style.display = 'block';
@@ -53,8 +52,6 @@ if (cartObjects.length == 0) {
   clearBtn.style.display = 'none';
   h1.innerHTML = "В корзине нет товаров";
 }
-
-
 
 function clearLocal() {
   localStorage.clear();
