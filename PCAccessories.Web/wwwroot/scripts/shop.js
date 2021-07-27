@@ -1,3 +1,5 @@
+
+
 function cb() {
   const shop_obj = document.getElementsByClassName("shop_object");
   const btn_shop = document.getElementsByClassName("addToCart");
