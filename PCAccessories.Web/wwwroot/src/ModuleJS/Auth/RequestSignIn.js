@@ -1,20 +1,12 @@
 import React from "react";
-import axios from "axios";
 
-class RequestSignIn extends React.Component {
+export default function RequestSignIn() {
 
-    state = {
+  fetch('http://localhost:3161/api/v1/auth/login')
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-    }
-
-  componentDidMount() {
-    const apiUrl = "http://localhost:3161/api/v1/auth/login";
-    axios.post(apiUrl)
-        .then(res => console.log(res));
-  }
-  render() {
-    return <button>Войти</button>;
-  }
-}
-
-export default RequestSignIn;
+  return (
+    <button>Войти</button>
+  );
+};
