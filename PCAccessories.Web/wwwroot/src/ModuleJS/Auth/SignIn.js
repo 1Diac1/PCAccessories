@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Requst from "./RequestSignIn";
 
 const SignIn = () => {
   return (
@@ -10,7 +11,7 @@ const SignIn = () => {
         <p>
           <a>Забыли пароль?</a>
         </p>
-        <button>Войти</button>
+        <Requst/>
         <h3>
           <NavLink to='/SignUp'>Нет аккаунта?</NavLink>
         </h3>
