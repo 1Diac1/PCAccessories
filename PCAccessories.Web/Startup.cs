@@ -36,7 +36,7 @@ namespace PCAccessories.Web
             app.UseRouting();
 
             app.UseDefaultFiles();
-            
+
             app.UseStaticFiles();
 
             app.UseAuthorization();

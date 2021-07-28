@@ -51,7 +51,7 @@ namespace PCAccessories.Web.Api
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsName, builder => builder
-                    .WithOrigins("http://localhost:10132")
+                    .WithOrigins("http://localhost:3000")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials());
