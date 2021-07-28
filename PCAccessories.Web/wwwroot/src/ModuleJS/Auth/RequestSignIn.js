@@ -10,7 +10,7 @@ class RequestSignIn extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(),
     };
-    fetch("https://localhost:3161/api/v1/auth/login", requestOptions)
+    fetch("http://localhost:3161/api/v1/auth/login", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
   }
