@@ -1,11 +1,13 @@
 import React from "react";
 
 class RequestSignIn extends React.Component {
-  render() {
-    fetch("http://localhost:3161/api/v1/auth/login")
+  componentDidMount() {
+    const apiUrl = "http://localhost:3161/api/v1/auth/login";
+    fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => console.log(data));
-
+      .then((data) => console.log("This is your data", data));
+  }
+  render() {
     return <button>Войти</button>;
   }
 }
