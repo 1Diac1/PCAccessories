@@ -4,7 +4,7 @@ import ArticleHome from "./ArticleHome";
 import Auth from "./Auth";
 import Footer from "./Footer";
 import Header from "./Header";
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from "react-router-dom/cjs/react-router-dom.min";
 
 const App = () => {
   return (
