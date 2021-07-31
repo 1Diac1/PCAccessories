@@ -38,8 +38,8 @@ const SignInReq = () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-  .catch((err) => {
-    render(<div>{err}</div>);
+  .then(err => {
+    alert(err);
   })
 };
 
