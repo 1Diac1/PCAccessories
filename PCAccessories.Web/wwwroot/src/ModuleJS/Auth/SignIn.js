@@ -46,6 +46,9 @@ const SignInReq = () => {
       for (let key in errors) {
         refErrors.current.innerHTML = errors[key];
       }
+      if(data.accessToken != undefined) {
+        localStorage.setItem(data.accessToken);
+      }
     })
 };
 
