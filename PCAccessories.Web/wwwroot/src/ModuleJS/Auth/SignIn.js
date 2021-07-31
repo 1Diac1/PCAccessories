@@ -42,7 +42,9 @@ const SignInReq = () => {
       .then(data => {
         let errors = data.errors;
         for (let key in errors) {
-          console.log(errors[key]);
+          render(
+            <div className='errors'>{errors[key]}</div>
+          )
         }
       })
 };

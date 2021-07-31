@@ -13,6 +13,7 @@
   width: 100%;
   height: 500px;
   font-family: "Tahoma", sans-serif;
+  margin-bottom: 20px;
 }
 
 .Auth .SignIn {
@@ -36,7 +37,12 @@
   -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
           box-shadow: 0 0 15px 5px #c0bcc5;
 }
-
+.errors {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  margin-bottom: 300px;
+}
 .Auth .SignIn * {
   margin: 10px;
 }
