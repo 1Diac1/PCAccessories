@@ -49,7 +49,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             var authResponse = await _identityService.LoginAsync(request);
 
             if (!authResponse.Success)
-                return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors }); 
+                return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
@@ -66,6 +66,19 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
+        }
+
+        private object GetErrors(ModelStateDictionary modelState)
+        {
+            var errors = new List<string>();
+
+            foreach (var state in modelState)
+                foreach (var error in state.Value.Errors)
+                    errors.Add(error.ErrorMessage);
+
+            var response = new { errors = errors };
+
+            return response;
         }
     }
 }
