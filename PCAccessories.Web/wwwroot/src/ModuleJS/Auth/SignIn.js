@@ -38,12 +38,13 @@ const SignInReq = () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-  .catch((err) => {
-    err.map((errors) => {
-      render(<div>{errors}</div>)
-    })
-    render(<div>{err}</div>);
-  })
+      .then(response => response.json())
+      .then(data => {
+        let errors = data.errors;
+        for (let key in errors) {
+          console.log(errors[key]);
+        }
+      })
 };
 
 export default SignIn;
