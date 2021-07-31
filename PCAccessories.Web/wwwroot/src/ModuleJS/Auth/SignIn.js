@@ -39,10 +39,12 @@ const SignInReq = () => {
     },
   })
       .then(response => response.json())
-      .then(data => 
-          render(
-              <div className="errors" >{data.errors}</div>
-          ))
+      .then(data => {
+        let errors = data.errors;
+        for (let key in errors) {
+          console.log(errors[key]);
+        }
+      })
 };
 
 export default SignIn;
