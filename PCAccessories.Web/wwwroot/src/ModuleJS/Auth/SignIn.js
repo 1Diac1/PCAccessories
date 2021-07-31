@@ -20,7 +20,7 @@ const SignIn = () => {
         <h3>
           <NavLink to="/SignUp">Нет аккаунта?</NavLink>
         </h3>
-        <p ref={refErrors} className='Errors'></p>
+        <p ref={refErrors} className='errors'></p>
       </div>
     </div>
   );
