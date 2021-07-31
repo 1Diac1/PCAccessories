@@ -15,7 +15,6 @@
   font-family: "Tahoma", sans-serif;
   margin-bottom: 20px;
 }
-
 .Auth .SignIn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,12 +35,6 @@
   border-radius: 10px;
   -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
           box-shadow: 0 0 15px 5px #c0bcc5;
-}
-.errors {
-  width: 150px;
-  height: 150px;
-  border: 1px solid black;
-  margin-bottom: 300px;
 }
 .Auth .SignIn * {
   margin: 10px;

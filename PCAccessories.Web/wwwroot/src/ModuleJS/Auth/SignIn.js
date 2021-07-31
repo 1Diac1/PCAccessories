@@ -38,15 +38,29 @@ const SignInReq = () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-      .then(response => response.json())
-      .then(data => {
-        let errors = data.errors;
-        for (let key in errors) {
-          render(
-            <div className='errors'>{errors[key]}</div>
-          )
-        }
-      })
+    .then(response => response.json())
+    .then(data => {
+      let errors = data.errors;
+      for (let key in errors) {
+        render(
+          <div className="Auth">
+            <div className="SignIn">
+              <h1>Вход</h1>
+              <input ref={refLogin} type="text" placeholder="Логин" />
+              <input ref={refPass} type="password" placeholder="Пароль" />
+              <p>
+                <a>Забыли пароль?</a>
+              </p>
+              <button onClick={SignInReq}>Войти</button>
+              <h3>
+                <NavLink to="/SignUp">Нет аккаунта?</NavLink>
+              </h3>
+              <p>{errors[key]}</p>
+            </div>
+          </div>
+        )
+      }
+    })
 };
 
 export default SignIn;
