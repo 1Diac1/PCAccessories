@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 
 let refLogin = React.createRef();
 let refPass = React.createRef();
+let refErrors = React.createRef();
 
 const SignIn = () => {
   return (
@@ -19,6 +20,7 @@ const SignIn = () => {
         <h3>
           <NavLink to="/SignUp">Нет аккаунта?</NavLink>
         </h3>
+        <p ref={refErrors} className='Errors'></p>
       </div>
     </div>
   );
@@ -42,23 +44,7 @@ const SignInReq = () => {
     .then(data => {
       let errors = data.errors;
       for (let key in errors) {
-        render(
-          <div className="Auth">
-            <div className="SignIn">
-              <h1>Вход</h1>
-              <input ref={refLogin} type="text" placeholder="Логин" />
-              <input ref={refPass} type="password" placeholder="Пароль" />
-              <p>
-                <a>Забыли пароль?</a>
-              </p>
-              <button onClick={SignInReq}>Войти</button>
-              <h3>
-                <NavLink to="/SignUp">Нет аккаунта?</NavLink>
-              </h3>
-              <p>{errors[key]}</p>
-            </div>
-          </div>
-        )
+        refErrors.current.innerHTML = errors[key];
       }
     })
 };
