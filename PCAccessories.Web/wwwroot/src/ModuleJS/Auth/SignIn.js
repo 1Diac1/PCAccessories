@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 
 let refLogin = React.createRef();
 let refPass = React.createRef();
+let refErrors = React.createRef();
 
 const SignIn = () => {
   return (
@@ -19,6 +20,7 @@ const SignIn = () => {
         <h3>
           <NavLink to="/SignUp">Нет аккаунта?</NavLink>
         </h3>
+        <p ref={refErrors} className='errors'></p>
       </div>
     </div>
   );
@@ -38,11 +40,16 @@ const SignInReq = () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-      .then(response => response.json())
-      .then(data => 
-          render(
-              <div className="errors" >{data.errors}</div>
-          ))
+    .then(response => response.json())
+    .then(data => {
+      let errors = data.errors;
+      for (let key in errors) {
+        refErrors.current.innerHTML = errors[key];
+      }
+      if(data.accessToken != undefined) {
+        localStorage.setItem(data.accessToken);
+      }
+    })
 };
 
 export default SignIn;
