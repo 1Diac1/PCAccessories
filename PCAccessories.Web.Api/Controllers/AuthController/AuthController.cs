@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PCAccessories.Application.Services.IdentityService;
 using PCAccessories.Core.Requests;
 using PCAccessories.Core.Requests.Identity;
