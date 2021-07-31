@@ -39,9 +39,6 @@ const SignInReq = () => {
     },
   })
   .catch((err) => {
-    err.map((errors) => {
-      render(<div>{errors}</div>)
-    })
     render(<div>{err}</div>);
   })
 };
