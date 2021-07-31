@@ -33,7 +33,7 @@ const SignUpReq = () => {
   let pass = refPass.current.value;
   let confirmPass = refConfirmPass.current.value;
 
-  fetch("http://localhost:3161/api/v1/auth/registr", {
+  fetch("http://localhost:3161/api/v1/auth/register", {
     method: "POST",
     body: JSON.stringify({
       Username: login,
