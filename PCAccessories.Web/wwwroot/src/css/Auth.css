@@ -110,6 +110,9 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
+.errors {
+  color:red;
+}
 
 @-webkit-keyframes opacityAll {
   0% {
