@@ -48,7 +48,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             var authResponse = await _identityService.LoginAsync(request);
 
             if (!authResponse.Success)
-                return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
+                return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors }); 
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }

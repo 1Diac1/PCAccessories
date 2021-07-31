@@ -9,7 +9,7 @@ namespace PCAccessories.Core.Requests.Identity
 {
     public class LoginRequest
     {
-        [Required(ErrorMessage = "Введите username")]
+        [Required(ErrorMessage = "Введите логин")]
         public string Username { get; set; }
 
 

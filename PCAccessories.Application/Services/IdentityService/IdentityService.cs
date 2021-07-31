@@ -46,7 +46,7 @@ namespace PCAccessories.Application.Services.IdentityService
             var existingUserByUsername = await _userManager.FindByNameAsync(request.Username);
 
             if (existingUserByUsername != null)
-                return new AuthResult { Errors = new[] { "Пользователь с таким username уже существует" } };
+                return new AuthResult { Errors = new[] { "Пользователь с таким логином уже существует" } };
 
             var user = new IdentityUser
             {
@@ -57,7 +57,7 @@ namespace PCAccessories.Application.Services.IdentityService
             var createdUser = await _userManager.CreateAsync(user, request.Password);
 
             if (!createdUser.Succeeded)
-                return new AuthResult { Errors = createdUser.Errors.Select(x => x.Description) };
+                return new AuthResult { Errors = createdUser.Errors.Select(x => x.Description) }; 
 
             AuthUserResponse response = await _authenticator.Authenticate(user);
 

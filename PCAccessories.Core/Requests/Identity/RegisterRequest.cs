@@ -21,7 +21,7 @@ namespace PCAccessories.Core.Requests.Identity
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = "Введите пароль")]
+        [Required(ErrorMessage = "Введите пароль повторно")]
         public string ConfirmPassword { get; set; }
     }
 }
