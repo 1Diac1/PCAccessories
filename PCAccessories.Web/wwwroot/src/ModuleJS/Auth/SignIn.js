@@ -28,10 +28,10 @@ const SignInReq = () => {
   let login = refLogin.current.value;
   let pass = refPass.current.value;
 
-  fetch("https://jsonplaceholder.typicode.com/posts", {
+  fetch("http://localhost:3161/api/v1/auth/login", {
     method: "POST",
     body: JSON.stringify({
-      Login: login,
+      Username: login,
       Password: pass,
     }),
     headers: {
