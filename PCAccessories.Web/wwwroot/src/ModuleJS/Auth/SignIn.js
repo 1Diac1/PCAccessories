@@ -1,6 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import React from "react";
-import { render } from "@testing-library/react";
 
 let refLogin = React.createRef();
 let refPass = React.createRef();
@@ -48,6 +47,7 @@ const SignInReq = () => {
       }
       if(data.accessToken != undefined && data.refreshToken != undefined) {
         localStorage.setItem('AccessToken', data.accessToken);
+        <Redirect to='/ArticleHome'/>
       }
     })
 };
