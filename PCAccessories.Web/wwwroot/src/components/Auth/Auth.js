@@ -17,7 +17,7 @@ const Auth = () => {
 };
 
 export const RedirectAuth = () => {
-  return <Redirect to='/Home'/>;
+    return <PrivateRoute path='/Home' component={ArticleHome} />
 };
 
 export default Auth;
