@@ -1,25 +1,23 @@
 import { NavLink, Redirect } from "react-router-dom";
-import React from 'react';
+import React from "react";
 
 let refLogin = React.createRef();
-let refEmail = React.createRef();
 let refPass = React.createRef();
-let refConfirmPass = React.createRef();
 let refErrors = React.createRef();
 
-
-const SignIn = () => {
+const Login = () => {
   return (
     <div className="Auth">
       <div className="SignIn">
-        <h1>Регистрация</h1>
+        <h1>Вход</h1>
         <input ref={refLogin} type="text" placeholder="Логин" />
-        <input ref={refEmail} type="mail" placeholder="Почта" />
         <input ref={refPass} type="password" placeholder="Пароль" />
-        <input ref={refConfirmPass} type="password" placeholder="Подтвердите пароль" />
-        <button onClick={SignUpReq}>Зарегистрироваться</button>
+        <p>
+          <a>Забыли пароль?</a>
+        </p>
+        <button onClick={SignInReq}>Войти</button>
         <h3>
-          <NavLink to='/SignIn'>Уже есть аккаунт?</NavLink>
+          <NavLink to="/Registration">Нет аккаунта?</NavLink>
         </h3>
         <p ref={refErrors} className='errors'></p>
       </div>
@@ -27,19 +25,15 @@ const SignIn = () => {
   );
 };
 
-const SignUpReq = () => {
+const SignInReq = () => {
   let login = refLogin.current.value;
-  let email = refEmail.current.value;
   let pass = refPass.current.value;
-  let confirmPass = refConfirmPass.current.value;
 
-  fetch("http://localhost:3161/api/v1/auth/register", {
+  fetch("http://localhost:3161/api/v1/auth/login", {
     method: "POST",
     body: JSON.stringify({
       Username: login,
-      Email: email,
       Password: pass,
-      ConfirmPassword: confirmPass,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -53,9 +47,9 @@ const SignUpReq = () => {
       }
       if(data.accessToken != undefined && data.refreshToken != undefined) {
         localStorage.setItem('AccessToken', data.accessToken);
-        <Redirect to='/SignIn'/>
+        <Redirect to='/ArticleHome'/>
       }
     })
 };
 
-export default SignIn;
+export default Login;

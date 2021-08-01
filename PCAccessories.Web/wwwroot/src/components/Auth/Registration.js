@@ -1,23 +1,26 @@
 import { NavLink, Redirect } from "react-router-dom";
-import React from "react";
+import React from 'react';
+import { Render } from "../../Redux/Render";
 
 let refLogin = React.createRef();
+let refEmail = React.createRef();
 let refPass = React.createRef();
+let refConfirmPass = React.createRef();
 let refErrors = React.createRef();
+
 
 const SignIn = () => {
   return (
     <div className="Auth">
       <div className="SignIn">
-        <h1>Вход</h1>
+        <h1>Регистрация</h1>
         <input ref={refLogin} type="text" placeholder="Логин" />
+        <input ref={refEmail} type="mail" placeholder="Почта" />
         <input ref={refPass} type="password" placeholder="Пароль" />
-        <p>
-          <a>Забыли пароль?</a>
-        </p>
-        <button onClick={SignInReq}>Войти</button>
+        <input ref={refConfirmPass} type="password" placeholder="Подтвердите пароль" />
+        <button onClick={SignUpReq}>Зарегистрироваться</button>
         <h3>
-          <NavLink to="/SignUp">Нет аккаунта?</NavLink>
+          <NavLink to='/Login'>Уже есть аккаунт?</NavLink>
         </h3>
         <p ref={refErrors} className='errors'></p>
       </div>
@@ -25,15 +28,19 @@ const SignIn = () => {
   );
 };
 
-const SignInReq = () => {
+const SignUpReq = () => {
   let login = refLogin.current.value;
+  let email = refEmail.current.value;
   let pass = refPass.current.value;
+  let confirmPass = refConfirmPass.current.value;
 
-  fetch("http://localhost:3161/api/v1/auth/login", {
+  fetch("http://localhost:3161/api/v1/auth/register", {
     method: "POST",
     body: JSON.stringify({
       Username: login,
+      Email: email,
       Password: pass,
+      ConfirmPassword: confirmPass,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -45,9 +52,9 @@ const SignInReq = () => {
       for (let key in errors) {
         refErrors.current.innerHTML = errors[key];
       }
-      if(data.accessToken != undefined && data.refreshToken != undefined) {
+      if(data.accessToken != null) {
         localStorage.setItem('AccessToken', data.accessToken);
-        <Redirect to='/ArticleHome'/>
+        <Redirect to='/Home'/>
       }
     })
 };

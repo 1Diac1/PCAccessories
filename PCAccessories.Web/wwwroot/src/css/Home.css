@@ -1,0 +1,121 @@
+.marginPage {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.marginPage .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 300px;
+}
+
+.marginPage .container article {
+  width: 45%;
+  padding: 30px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
+          box-shadow: 0 0 15px 5px #c0bcc5;
+}
+
+.marginPage .container article h1 {
+  margin: 15px;
+  font-size: 25px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.marginPage .container article p {
+  font-size: 20px;
+}
+
+.marginPage .container article a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #033c51;
+  color: black;
+  background-color: inherit;
+  float: right;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.marginPage .container article a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #033c51;
+  color: #fff;
+}
+
+.marginPage .container .rightFloat {
+  text-align: right;
+}
+
+.marginPage .container .rightFloat a {
+  float: left;
+}
+
+@media (max-width: 1210px) {
+  .marginPage {
+    margin-top: -10%;
+  }
+  .marginPage .container {
+    margin-bottom: 150px;
+  }
+  .marginPage .container article {
+    width: 80%;
+    padding: 30px;
+  }
+  .marginPage .container img {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .marginPage .container {
+    margin-bottom: 100px;
+  }
+  .marginPage .container article {
+    width: 100%;
+    padding: 30px;
+  }
+  .marginPage .container article h1 {
+    text-align: center;
+    font-size: 20px;
+  }
+  .marginPage .container article p {
+    font-size: 15px;
+    text-align: center;
+  }
+  .marginPage .container article a {
+    float: none;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+  .marginPage .container img {
+    display: none;
+  }
+  .marginPage .container .rightFloat a {
+    float: none;
+  }
+}
+/*# sourceMappingURL=Home.css.map */

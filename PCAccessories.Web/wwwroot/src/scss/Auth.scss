@@ -18,66 +18,67 @@ $inputbg_color: #e7e3ed;
     height: 500px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow   : 0 0 15px 5px #c0bcc5;
+    box-shadow: 0 0 15px 5px #c0bcc5;
     & * {
-        margin: 10px;
+      margin: 10px;
     }
     h1 {
-        font-weight: 900;
-        font-size: 25px;
-        text-transform: uppercase;
+      font-weight: 900;
+      font-size: 25px;
+      text-transform: uppercase;
+    }
+    input {
+      width: 50%;
+      height: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid $inputbg_color;
+      background-color: $inputbg_color;
+      outline: none;
+      transition: 1s;
+      &:focus {
+        width: 70%;
       }
-      input {
-        width: 50%;
-        height: 30px;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid $inputbg_color;
-        background-color: $inputbg_color;
-        outline: none;
-        transition: 1s;
-        &:focus {
-          width: 70%;
+    }
+    button {
+      border-radius: 20px;
+      color: #fff;
+      padding: 12px 65px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      background-color: #022b3a;
+      border: none;
+      transition: 0.5s;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+    h3,
+    p {
+      margin-top: 20px;
+      a {
+        cursor: pointer;
+        color: rgb(83, 79, 79);
+        text-decoration: none;
+        margin-bottom: 20px;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 1px;
+          background-color: #46444b;
+          left: 50%;
+          top: 100%;
+          transition: 0.5s;
+        }
+        &:hover::after {
+          width: 100%;
+          left: 0;
+          transition: 0.5s;
         }
       }
-      button {
-        border-radius: 20px;
-        color: #fff;
-        padding: 12px 65px;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        background-color: #022b3a;
-        border: none;
-        transition: 0.5s;
-        &:active {
-          transform: scale(0.9);
-        }
-      }
-      h3, p {
-        margin-top: 20px;
-        a {
-            cursor: pointer;
-            color: rgb(83, 79, 79);
-            text-decoration: none;
-            margin-bottom: 20px;
-            position: relative;
-            &::after {
-              content: "";
-              position: absolute;
-              width: 0;
-              height: 1px;
-              background-color: #46444b;
-              left: 50%;
-              top: 100%;
-              transition: 0.5s;
-            }
-            &:hover::after {
-              width: 100%;
-              left: 0;
-              transition: 0.5s;
-            }
-      }
-      }
+    }
   }
 }
 @keyframes opacityAll {

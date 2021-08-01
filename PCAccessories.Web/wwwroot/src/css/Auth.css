@@ -12,10 +12,10 @@
           animation: opacityAll 1s ease-in-out;
   width: 100%;
   height: 500px;
+  margin-bottom: 200px;
   font-family: "Tahoma", sans-serif;
-  margin-bottom: 20px;
-  margin-bottom: 300px;
 }
+
 .Auth .SignIn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -37,6 +37,7 @@
   -webkit-box-shadow: 0 0 15px 5px #c0bcc5;
           box-shadow: 0 0 15px 5px #c0bcc5;
 }
+
 .Auth .SignIn * {
   margin: 10px;
 }
@@ -80,11 +81,13 @@
           transform: scale(0.9);
 }
 
-.Auth .SignIn h3, .Auth .SignIn p {
+.Auth .SignIn h3,
+.Auth .SignIn p {
   margin-top: 20px;
 }
 
-.Auth .SignIn h3 a, .Auth .SignIn p a {
+.Auth .SignIn h3 a,
+.Auth .SignIn p a {
   cursor: pointer;
   color: #534f4f;
   text-decoration: none;
@@ -92,7 +95,8 @@
   position: relative;
 }
 
-.Auth .SignIn h3 a::after, .Auth .SignIn p a::after {
+.Auth .SignIn h3 a::after,
+.Auth .SignIn p a::after {
   content: "";
   position: absolute;
   width: 0;
@@ -104,14 +108,12 @@
   transition: 0.5s;
 }
 
-.Auth .SignIn h3 a:hover::after, .Auth .SignIn p a:hover::after {
+.Auth .SignIn h3 a:hover::after,
+.Auth .SignIn p a:hover::after {
   width: 100%;
   left: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-.errors {
-  color:red;
 }
 
 @-webkit-keyframes opacityAll {

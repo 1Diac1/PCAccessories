@@ -1,6 +1,7 @@
-import pcHome from "../img/pc.png";
-import graphicsСard from "../img/videokarta.png";
-import mother from "../img/mother.png";
+import pcHome from "../../img/pc.png";
+import graphicsСard from "../../img/videokarta.png";
+import mother from "../../img/mother.png"
+import '../../css/Home.css'
 
 const ArticleHome = () => {
   let titles = {
