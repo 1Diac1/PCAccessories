@@ -54,7 +54,6 @@ const SignUpReq = () => {
       }
       if(data.accessToken != null) {
         localStorage.setItem('AccessToken', data.accessToken);
-        <Redirect to='/Home'/>
       }
     })
 };

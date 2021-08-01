@@ -116,6 +116,10 @@
   transition: 0.5s;
 }
 
+.Auth .SignIn .errors {
+  color: red;
+}
+
 @-webkit-keyframes opacityAll {
   0% {
     opacity: 0;

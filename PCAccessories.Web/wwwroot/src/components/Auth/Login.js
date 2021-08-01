@@ -47,7 +47,6 @@ const SignInReq = () => {
       }
       if(data.accessToken != undefined && data.refreshToken != undefined) {
         localStorage.setItem('AccessToken', data.accessToken);
-        <Redirect to='/ArticleHome'/>
       }
     })
 };
