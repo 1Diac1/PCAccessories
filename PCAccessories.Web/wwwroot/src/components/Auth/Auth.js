@@ -15,9 +15,4 @@ const Auth = () => {
     </BrowserRouter>
   );
 };
-
-export const RedirectAuth = () => {
-    return <PrivateRoute path='/Home' component={ArticleHome} />
-};
-
 export default Auth;
