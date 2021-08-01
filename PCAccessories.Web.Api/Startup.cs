@@ -132,7 +132,7 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
-            //app.UseIpRateLimiting();
+            // TODO: подключить ограничения запросов к API. app.UseIpRateLimiting();
             app.UseCors(CorsName);
 
             app.UseAuthentication();
