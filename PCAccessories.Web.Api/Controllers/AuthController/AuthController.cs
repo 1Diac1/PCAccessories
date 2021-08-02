@@ -67,18 +67,5 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
         }
-
-        private object GetErrors(ModelStateDictionary modelState)
-        {
-            var errors = new List<string>();
-
-            foreach (var state in modelState)
-                foreach (var error in state.Value.Errors)
-                    errors.Add(error.ErrorMessage);
-
-            var response = new { errors = errors };
-
-            return response;
-        }
     }
 }
