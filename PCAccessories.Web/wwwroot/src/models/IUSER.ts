@@ -1,5 +1,5 @@
 export interface IUSER {
-    email: string;
+    login: string;
     isActivated: boolean;
     id: string;
 }
