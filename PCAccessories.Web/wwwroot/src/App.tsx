@@ -31,9 +31,8 @@ function App() {
 
   return (
       <div className="App">
-          { console.log(store) }
           <h1>{store.isAuth ? `Вы вошли как:  ${store.user}` : 'Пожалуйста войдите'}</h1>
-        <button onClick={() => store.logout()}>Exit</button>
+          <button onClick={() => store.logout()}>Exit</button>
 
         {/*<div>*/}
         {/*    <button onClick={() => getUsers()}>Get Users</button>*/}
