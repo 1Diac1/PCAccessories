@@ -1,6 +1,5 @@
 export interface IUSER {
-    login: string;
-    Email: string;
-    EmailConfirmed: boolean;
-    id: string;
+    username: string;
+    email: string;
+    emailConfirmed: boolean;
 }

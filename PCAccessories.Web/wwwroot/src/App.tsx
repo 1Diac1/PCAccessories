@@ -31,7 +31,7 @@ function App() {
 
   return (
       <div className="App">
-          <h1>{store.isAuth ? `Вы вошли как:  ${store.user}` : 'Пожалуйста войдите'}</h1>
+          <h1>{store.isAuth ? `Вы вошли как:  ${store.username}` : 'Пожалуйста войдите'}</h1>
           <button onClick={() => store.logout()}>Exit</button>
 
         {/*<div>*/}
@@ -39,7 +39,7 @@ function App() {
         {/*</div>*/}
 
         {/*{users.map(user => {*/}
-        {/*   <pre key={user.Email}>{user.Email}</pre>*/}
+        {/*   <pre key={user.email}>{user.email}</pre>*/}
         {/*})}*/}
     </div>
   );

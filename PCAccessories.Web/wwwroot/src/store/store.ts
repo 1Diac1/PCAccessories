@@ -6,7 +6,8 @@ import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
 
 export default class Store {
-    user = {} as IUSER;
+    username = "";
+    email = "";
     isAuth = false;
     isLoading = false;
 
@@ -18,33 +19,39 @@ export default class Store {
         this.isAuth = bool;
     }
 
-    setUser(user: IUSER) {
-        this.user = user;
+    setUser(user: string) {
+        this.username = user;
+    }
+
+    setEmail(email: string) {
+        this.email = email;
     }
 
     setLoading(bool: boolean) {
         this.isLoading = bool;
     }
 
-    async login(Username: string, password: string) {
+    async login(username: string, password: string) {
         try {
-            const response = await AuthService.login(Username, password);
+            const response = await AuthService.login(username, password);
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.user)
+            this.setUser(response.data.username)
         } catch(e) {
             console.log(e.response?.data?.message);
             
         }
     }
     
-    async registration(Username: string, email: string, password: string, confirmPassword:string) {
+    async registration(username: string, email: string, password: string, confirmPassword:string) {
         try {
-            const response = await AuthService.registration(Username, email, password, confirmPassword);
+            const response = await AuthService.registration(username, email, password, confirmPassword);
+            console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.user)
+            this.setUser(response.data.username)
+            this.setEmail(response.data.email)
         } catch(e) {
             console.log(e.response?.data?.message);
             
@@ -55,8 +62,8 @@ export default class Store {
         try {
             const response = await AuthService.logout();
             localStorage.removeItem('token');
-            this.setAuth(false)
-            this.setUser({} as IUSER)
+            this.setAuth(false);
+            this.setUser("");
         } catch(e) {
             console.log(e.response?.data?.message);
             
@@ -71,7 +78,7 @@ export default class Store {
 
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.user)
+            this.setUser(response.data.username)
         } catch (e) {
             console.log(e.response?.data?.message);
 

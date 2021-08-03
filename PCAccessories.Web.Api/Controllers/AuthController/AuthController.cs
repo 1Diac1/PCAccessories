@@ -36,9 +36,9 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken, Username = request.Username, Email = request.Email });
         }
-        
+         
         [HttpPost(ApiRoutes.Auth.Login)]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
@@ -51,10 +51,10 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken });
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken, Username = request.Username });
         }
 
-        [HttpPost(ApiRoutes.Auth.Refresh)]
+        [HttpGet(ApiRoutes.Auth.Refresh)]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)
         {
             if (!ModelState.IsValid)

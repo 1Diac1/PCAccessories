@@ -1,28 +1,29 @@
 import React, { FC, useState, useContext } from "react";
 import { Context } from "../index";
-import {observer} from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
+import 
 
 const LoginForm: FC = () => {
-  const [login, setLogin] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const { store } = useContext(Context);
 
 
   return (
     <div>
       <input
-        onChange={(e) => setLogin(e.target.value)}
-        value={login}
+            onChange={e => setUsername(e.target.value)}
+            value={username}
         type="text"
         placeholder="Введите свой логин"
       />
       <input
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
         value={password}
         type="password"
         placeholder="Введите свой пароль"
-      />
-      <button onClick={() => store.login(login, password)}>Войти</button>
+          />
+        <button onClick={() => store.login(username, password)}>Войти</button>
     </div>
   );
 };
