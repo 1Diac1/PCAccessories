@@ -6,8 +6,6 @@ import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
 
 export default class Store {
-    username = "";
-    email = "";
     isAuth = false;
     isLoading = false;
 
@@ -17,14 +15,6 @@ export default class Store {
 
     setAuth(bool: boolean) {
         this.isAuth = bool;
-    }
-
-    setUser(user: string) {
-        this.username = user;
-    }
-
-    setEmail(email: string) {
-        this.email = email;
     }
 
     setLoading(bool: boolean) {
@@ -37,7 +27,6 @@ export default class Store {
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
         } catch(e) {
             console.log(e.response?.data?.message);
             
@@ -50,8 +39,6 @@ export default class Store {
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
-            this.setEmail(response.data.email)
         } catch(e) {
             console.log(e.response?.data?.message);
             
@@ -63,7 +50,6 @@ export default class Store {
             const response = await AuthService.logout();
             localStorage.removeItem('token');
             this.setAuth(false);
-            this.setUser("");
         } catch(e) {
             console.log(e.response?.data?.message);
             
@@ -78,7 +64,6 @@ export default class Store {
 
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
         } catch (e) {
             console.log(e.response?.data?.message);
 

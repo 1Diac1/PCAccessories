@@ -36,7 +36,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken, Username = request.Username, Email = request.Email });
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken });
         }
          
         [HttpPost(ApiRoutes.Auth.Login)]
@@ -51,7 +51,7 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
             if (!authResponse.Success)
                 return BadRequest(new AuthFailedResponse { Errors = authResponse.Errors });
 
-            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken, RefreshToken = authResponse.RefreshToken, Username = request.Username });
+            return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken });
         }
 
         [HttpGet(ApiRoutes.Auth.Refresh)]
