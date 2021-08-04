@@ -2,7 +2,7 @@ import React from "react";
 import { createContext } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import Store from "./store/store";
+import Store from "./Auth/store/store";
 
 interface State {
   store: Store;

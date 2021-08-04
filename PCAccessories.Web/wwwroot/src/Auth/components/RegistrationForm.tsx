@@ -1,5 +1,5 @@
-import React, { FC, useState, useContext } from "react";
-import { Context } from "../index";
+import React, {FC, useContext, useState} from "react";
+import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
 const RegistrationForm: FC = () => {
@@ -7,7 +7,7 @@ const RegistrationForm: FC = () => {
     const [username, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
-    const { store } = useContext(Context);
+    const {store} = useContext(Context);
 
     return (
         <div>
@@ -35,7 +35,8 @@ const RegistrationForm: FC = () => {
                 type="password"
                 placeholder="Подтвердите свой пароль"
             />
-            <button onClick={() => store.registration(username, email, password, confirmPassword)}>Зарегистрироваться</button>
+            <button onClick={() => store.registration(username, email, password, confirmPassword)}>Зарегистрироваться
+            </button>
         </div>
     );
 };

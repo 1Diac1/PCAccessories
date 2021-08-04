@@ -1,5 +1,4 @@
-import { makeAutoObservable } from "mobx";
-import { IUSER } from "../models/IUSER";
+import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
@@ -38,13 +37,13 @@ export default class Store {
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
             this.setUser(response.data.username)
-        } catch(e) {
-            console.log(e.response?.data?.message);
-            
+        } catch (e) {
+            console.log(e.data);
+
         }
     }
-    
-    async registration(username: string, email: string, password: string, confirmPassword:string) {
+
+    async registration(username: string, email: string, password: string, confirmPassword: string) {
         try {
             const response = await AuthService.registration(username, email, password, confirmPassword);
             console.log(response);
@@ -52,21 +51,20 @@ export default class Store {
             this.setAuth(true)
             this.setUser(response.data.username)
             this.setEmail(response.data.email)
-        } catch(e) {
-            console.log(e.response?.data?.message);
-            
+        } catch (e) {
+            console.log(e.data);
+
         }
     }
 
     async logout() {
         try {
-            const response = await AuthService.logout();
+            await AuthService.logout();
             localStorage.removeItem('token');
             this.setAuth(false);
             this.setUser("");
-        } catch(e) {
-            console.log(e.response?.data?.message);
-            
+        } catch (e) {
+            console.log(e.data)
         }
     }
 
@@ -80,7 +78,7 @@ export default class Store {
             this.setAuth(true)
             this.setUser(response.data.username)
         } catch (e) {
-            console.log(e.response?.data?.message);
+            console.log(e.data);
 
         } finally {
             this.setLoading(false)
