@@ -18,14 +18,6 @@ export default class Store {
         this.isAuth = bool;
     }
 
-    setUser(user: string) {
-        this.username = user;
-    }
-
-    setEmail(email: string) {
-        this.email = email;
-    }
-
     setLoading(bool: boolean) {
         this.isLoading = bool;
     }
@@ -36,7 +28,6 @@ export default class Store {
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
         } catch (e) {
             console.log(e.data);
 
@@ -49,8 +40,6 @@ export default class Store {
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
-            this.setEmail(response.data.email)
         } catch (e) {
             console.log(e.data);
 
@@ -62,7 +51,6 @@ export default class Store {
             await AuthService.logout();
             localStorage.removeItem('token');
             this.setAuth(false);
-            this.setUser("");
         } catch (e) {
             console.log(e.data)
         }
@@ -76,7 +64,6 @@ export default class Store {
 
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.username)
         } catch (e) {
             console.log(e.data);
 
