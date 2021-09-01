@@ -1,39 +1,29 @@
-using AspNetCoreRateLimit;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.CookiePolicy;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using PCAccessories.Application;
-using PCAccessories.Application.Repositories.RefreshTokenRepository;
-using PCAccessories.Application.Repositories.RefreshTokenRepository.Authenticators;
 using PCAccessories.Application.Repositories.RefreshTokenRepository.TokenGenerators;
 using PCAccessories.Application.Repositories.RefreshTokenRepository.TokenValidators;
-using PCAccessories.Application.Services;
+using PCAccessories.Application.Repositories.RefreshTokenRepository.Authenticators;
+using PCAccessories.Application.Repositories.RefreshTokenRepository;
 using PCAccessories.Application.Services.IdentityService;
 using PCAccessories.Application.Services.ProductService;
-using PCAccessories.Core.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using PCAccessories.Helpers.Authentication;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using PCAccessories.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using AspNetCoreRateLimit;
 using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace PCAccessories.Web.Api
 {
     public class Startup
     {
-        readonly string CorsName = "CorsPolicy";
+        private readonly string CorsName = "CorsPolicy";
 
         public Startup(IConfiguration configuration)
         {
@@ -132,7 +122,7 @@ namespace PCAccessories.Web.Api
 
             app.UseRouting();
 
-            // TODO: подключить ограничения запросов к API. app.UseIpRateLimiting();
+            // TODO: enable API request restrictions. app.UseIpRateLimiting();
             app.UseCors(CorsName);
 
             app.UseAuthentication();

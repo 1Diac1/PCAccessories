@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PCAccessories.Core;
-using PCAccessories.Core.Entities;
 using PCAccessories.Core.Entities.Product;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCAccessories.Infrastructure
 {

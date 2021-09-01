@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PCAccessories.Application.Services.IdentityService;
-using PCAccessories.Core.Requests;
 using PCAccessories.Core.Requests.Identity;
 using PCAccessories.Core.Responses;
 using PCAccessories.Web.Api.Contracts.V1;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -53,6 +50,8 @@ namespace PCAccessories.Web.Api.Controllers.AuthController
 
             return Ok(new AuthUserResponse { AccessToken = authResponse.AccessToken });
         }
+
+
 
         [HttpGet(ApiRoutes.Auth.Refresh)]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)

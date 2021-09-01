@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PCAccessories.Application.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using PCAccessories.Core.Entities;
 using PCAccessories.Application.Services.ProductService;
 using Microsoft.AspNetCore.Identity;
-using PCAccessories.Application.Services.ProductRepository.Dto;
 using PCAccessories.Core.Requests.Product;
 using PCAccessories.Web.Api.Contracts.V1;
 using Microsoft.AspNetCore.Authorization;
@@ -17,7 +11,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace PCAccessories.Web.Api.Controllers.Product
 {
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -51,6 +45,9 @@ namespace PCAccessories.Web.Api.Controllers.Product
         [HttpPost(ApiRoutes.Product.Create)]
         public async Task<IActionResult> Create([FromBody] CreateProductRequest request)
         {
+            if (request == null)
+                BadRequest();
+
             var product = new PCAccessories.Core.Entities.Product.Product()
             {
                 Title = request.Title,
@@ -59,9 +56,6 @@ namespace PCAccessories.Web.Api.Controllers.Product
                 IsAvailable = request.IsAvailable,
                 CreationDate = DateTime.Now
             };
-
-            if (product == null)
-                return NotFound();
 
             await _productService.CreateAsync(product);
 
@@ -74,7 +68,7 @@ namespace PCAccessories.Web.Api.Controllers.Product
             var product = await _productService.GetByIdAsync(productId);
 
             if (product == null)
-                return NotFound();
+                return BadRequest();
 
             product.Title = request.Title;
             product.Description = request.Description;
@@ -90,15 +84,15 @@ namespace PCAccessories.Web.Api.Controllers.Product
         [HttpPost(ApiRoutes.Product.Delete)]
         public async Task<IActionResult> Delete([FromRoute] Guid productId)
         {
-            if (productId == null)
-                return NotFound();
+            if (productId == default)
+                return BadRequest();
 
             var deleted = await _productService.DeleteAsync(productId);
 
             if (deleted)
                 return Ok();
 
-            return NotFound();
+            return BadRequest();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace PCAccessories.Web.Api.Contracts.V1
         {
             public const string Login = Base + "/auth/login";
             public const string Register = Base + "/auth/register";
+            public const string Logout = Base + "/auth/logout";
             public const string Refresh = Base + "/auth/refresh";
         }
         
@@ -26,7 +27,6 @@ namespace PCAccessories.Web.Api.Contracts.V1
             public const string Create = Base + "/product";
             public const string Update = Base + "/productupdate/{productId}";
             public const string Delete = Base + "/product/{productId}";
-
         }
     }
 }
